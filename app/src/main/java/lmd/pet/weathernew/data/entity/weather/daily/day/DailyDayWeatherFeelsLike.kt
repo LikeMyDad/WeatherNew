@@ -1,4 +1,4 @@
-package com.example.weather.data.response.weather.daily.day
+package lmd.pet.weathernew.data.entity.weather.daily.day
 
 import java.io.Serializable
 

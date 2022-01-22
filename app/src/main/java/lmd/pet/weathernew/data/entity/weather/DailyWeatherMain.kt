@@ -1,8 +1,8 @@
-package com.example.weather.data.response.weather
+package lmd.pet.weathernew.data.entity.weather
 
 import lmd.pet.weathernew.data.entity.weather.current.CurrentWeather
 import lmd.pet.weathernew.data.entity.weather.daily.day.DailyDayWeather
-import com.example.weather.data.response.weather.daily.hour.HourlyWeather
+import lmd.pet.weathernew.data.entity.weather.daily.hour.HourlyWeather
 import com.google.gson.annotations.SerializedName
 
 data class DailyWeatherMain (

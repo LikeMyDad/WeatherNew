@@ -1,8 +1,5 @@
 package lmd.pet.weathernew.data.entity.weather.daily.day
 
-import com.example.weather.data.response.weather.daily.day.DailyDayWeatherFeelsLike
-import com.example.weather.data.response.weather.daily.day.DailyDayWeatherIcon
-import com.example.weather.data.response.weather.daily.day.DailyDayWeatherTemp
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 

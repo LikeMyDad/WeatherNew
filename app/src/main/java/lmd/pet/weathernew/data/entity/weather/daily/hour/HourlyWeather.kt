@@ -1,4 +1,4 @@
-package com.example.weather.data.response.weather.daily.hour
+package lmd.pet.weathernew.data.entity.weather.daily.hour
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
