@@ -3,6 +3,7 @@ package lmd.pet.weathernew.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
+import lmd.pet.weathernew.R
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

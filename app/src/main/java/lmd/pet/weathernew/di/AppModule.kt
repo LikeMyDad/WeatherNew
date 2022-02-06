@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import lmd.pet.weathernew.BuildConfig
 import lmd.pet.weathernew.data.api.CitiesApi
 import lmd.pet.weathernew.data.api.WeatherApi
 import okhttp3.OkHttpClient
@@ -18,7 +19,8 @@ object AppModule {
     @Provides
     @Singleton
     fun providerOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder().build()
+        return OkHttpClient.Builder()
+            .build()
     }
 
     @Provides
@@ -33,7 +35,7 @@ object AppModule {
     @Singleton
     fun provideWeatherApi(retrofit: Retrofit.Builder): WeatherApi {
         return retrofit
-            .baseUrl(WEATHER_URL)
+            .baseUrl(BuildConfig.weatherUrl)
             .build()
             .create(WeatherApi::class.java)
     }
@@ -42,12 +44,11 @@ object AppModule {
     @Singleton
     fun provideCitiesApi(retrofit: Retrofit.Builder): CitiesApi {
         return retrofit
-            .baseUrl(CITIES_URL)
+            .baseUrl(BuildConfig.citiesUrl)
             .build()
             .create(CitiesApi::class.java)
     }
 
-    private const val WEATHER_URL = "https://api.openweathermap.org"
-    private const val CITIES_URL = "https://public.opendatasoft.com/"
-    
+
+
 }

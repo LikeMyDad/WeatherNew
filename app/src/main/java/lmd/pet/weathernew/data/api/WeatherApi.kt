@@ -1,6 +1,6 @@
 package lmd.pet.weathernew.data.api
 
-import lmd.pet.weathernew.data.entity.weather.DailyWeatherMain
+import lmd.pet.weathernew.data.entity.weather.DailyWeather
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,6 +14,6 @@ interface WeatherApi {
         @Query("exclude") exclude: String,
         @Query("units") units: String,
         @Query("appid") appid: String
-    ): Response<DailyWeatherMain>
+    ): Response<DailyWeather>
 
 }

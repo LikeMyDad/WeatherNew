@@ -5,7 +5,7 @@ import lmd.pet.weathernew.data.entity.weather.daily.day.DailyDayWeather
 import lmd.pet.weathernew.data.entity.weather.daily.hour.HourlyWeather
 import com.google.gson.annotations.SerializedName
 
-data class DailyWeatherMain (
+data class DailyWeather (
     val lat: Double,
     val lon: Double,
     val timezone: String,
