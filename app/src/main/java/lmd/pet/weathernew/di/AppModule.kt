@@ -1,11 +1,15 @@
 package lmd.pet.weathernew.di
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import lmd.pet.weathernew.BuildConfig
 import lmd.pet.weathernew.data.api.CitiesApi
 import lmd.pet.weathernew.data.api.WeatherApi
+import lmd.pet.weathernew.utils.serialization.CitySerialization
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,9 +20,17 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
+    fun provideGsonCity(): Gson {
+        return GsonBuilder()
+            .registerTypeAdapter(CitySerialization::class.javaObjectType, CitySerialization())
+            .create()
+    }
+
+    @Provides
     @Singleton
     fun providerOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder().build()
+        return OkHttpClient.Builder()
+            .build()
     }
 
     @Provides
@@ -26,28 +38,26 @@ object AppModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit.Builder {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
     }
 
     @Provides
     @Singleton
     fun provideWeatherApi(retrofit: Retrofit.Builder): WeatherApi {
         return retrofit
-            .baseUrl(WEATHER_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BuildConfig.weatherUrl)
             .build()
             .create(WeatherApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideCitiesApi(retrofit: Retrofit.Builder): CitiesApi {
+    fun provideCitiesApi(retrofit: Retrofit.Builder, gson: Gson): CitiesApi {
         return retrofit
-            .baseUrl(CITIES_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .baseUrl(BuildConfig.citiesUrl)
             .build()
             .create(CitiesApi::class.java)
     }
 
-    private const val WEATHER_URL = "https://api.openweathermap.org"
-    private const val CITIES_URL = "https://public.opendatasoft.com/"
-    
 }

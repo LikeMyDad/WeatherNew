@@ -1,6 +1,6 @@
 package lmd.pet.weathernew.data.api
 
-import lmd.pet.weathernew.data.entity.cities.Cities
+import lmd.pet.weathernew.data.entity.response.cities.Cities
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
