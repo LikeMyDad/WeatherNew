@@ -1,14 +1,14 @@
 package lmd.pet.weathernew.core.network
 
 import lmd.pet.weathernew.BuildConfig
-import lmd.pet.weathernew.core.base.Router
-import lmd.pet.weathernew.core.base.WeatherResponse
+import lmd.pet.weathernew.utils.Network
+import lmd.pet.weathernew.utils.WeatherResponse
 import lmd.pet.weathernew.data.api.WeatherApi
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class WeatherNetwork @Inject constructor(private val service: WeatherApi): Router() {
+class WeatherNetwork @Inject constructor(private val service: WeatherApi) : Network() {
 
     suspend fun getDailyWeather(lat: Double, lon: Double): WeatherResponse {
         return makeRequest {
