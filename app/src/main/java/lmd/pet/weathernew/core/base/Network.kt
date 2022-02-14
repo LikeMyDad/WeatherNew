@@ -1,11 +1,12 @@
-package lmd.pet.weathernew.utils
+package lmd.pet.weathernew.core.base
 
+import lmd.pet.weathernew.utils.network.NetworkResponse
 import retrofit2.Response
 import java.lang.Exception
 import java.lang.NullPointerException
 
 abstract class Network {
-    inline fun <reified T> makeRequest(
+    protected inline fun <reified T> makeRequest(
         responseBody: () -> Response<T>
     ): NetworkResponse<T> {
         return try {
@@ -15,14 +16,13 @@ abstract class Network {
                     response.body() ?: throw NullPointerException()
                 )
             } else {
-                errorNetwork("${response.code()} ${response.message()}")
+                NetworkResponse.Error(
+                    "${response.code()} ${response.message()}"
+                )
             }
         } catch (e: Exception) {
-            errorNetwork(e.message ?: e.toString())
+            NetworkResponse.Error(e.message ?: e.toString())
         }
     }
 
-    @PublishedApi
-    internal inline fun <reified T> errorNetwork(messageError: String): NetworkResponse<T> =
-        NetworkResponse.Error(messageError)
 }

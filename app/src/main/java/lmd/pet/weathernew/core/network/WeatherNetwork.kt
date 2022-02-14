@@ -1,7 +1,7 @@
 package lmd.pet.weathernew.core.network
 
 import lmd.pet.weathernew.BuildConfig
-import lmd.pet.weathernew.utils.Network
+import lmd.pet.weathernew.core.base.Network
 import lmd.pet.weathernew.utils.WeatherResponse
 import lmd.pet.weathernew.data.api.WeatherApi
 import javax.inject.Inject
