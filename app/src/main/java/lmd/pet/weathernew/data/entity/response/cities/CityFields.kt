@@ -2,7 +2,7 @@ package lmd.pet.weathernew.data.entity.response.cities
 
 import com.google.gson.annotations.SerializedName
 
-data class CitiesFields(
+data class CityFields(
     @SerializedName("name")
     val cityName: String,
     @SerializedName("timezone")
