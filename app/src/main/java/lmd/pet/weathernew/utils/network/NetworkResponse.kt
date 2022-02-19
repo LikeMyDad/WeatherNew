@@ -1,4 +1,4 @@
-package lmd.pet.weathernew.utils
+package lmd.pet.weathernew.utils.network
 
 sealed class NetworkResponse<T>(
     val data: T? = null,
