@@ -10,6 +10,6 @@ import lmd.pet.weathernew.data.entity.dao.cities.CitiesDao
 )
 abstract class CitiesDataBase: RoomDatabase() {
 
-    abstract suspend fun getCitiesDao(): CitiesDao
+    abstract fun getCitiesDao(): CitiesDao
 
 }

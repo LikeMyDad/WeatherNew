@@ -7,7 +7,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CitiesNetwork @Inject constructor(private val service: CitiesApi) : Network() {
+class CitiesNetwork @Inject constructor(
+    private val service: CitiesApi
+) : Network() {
 
     suspend fun getCities(): CitiesResponse {
         return makeRequest {
