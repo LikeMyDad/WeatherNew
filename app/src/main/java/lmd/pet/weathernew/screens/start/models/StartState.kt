@@ -1,4 +1,4 @@
-package lmd.pet.weathernew.screens.start
+package lmd.pet.weathernew.screens.start.models
 
 sealed class StartState{
     object Empty: StartState()
