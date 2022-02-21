@@ -6,6 +6,11 @@ plugins {
     kotlin("kapt")
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 android {
     compileSdk = Config.compileSdk
 

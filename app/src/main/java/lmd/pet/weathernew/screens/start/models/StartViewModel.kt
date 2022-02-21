@@ -1,6 +1,7 @@
 package lmd.pet.weathernew.screens.start.models
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,24 +13,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StartViewModel @Inject constructor(
-    private val citiesUseCase: CitiesInteractor
+
 ) : ViewModel(), EventHandler<StartState> {
 
-    private val mutUiStateFlow = MutableStateFlow<StartState>(StartState.Empty)
-    val uiStateFlow = mutUiStateFlow.readOnly()
 
-    init {
-        citiesUseCase.execute(
-            scope = viewModelScope,
-            params = CitiesInteractor.Params(""),
-            onPreExecute = {
-                mutUiStateFlow.value = StartState.Loading
-            },
-            onComplete = {
-                Log.d("CheckCities", ": $it")
-            }
-        )
-    }
 
     override fun obtainEvent(event: StartState) {
         TODO("Not yet implemented")
