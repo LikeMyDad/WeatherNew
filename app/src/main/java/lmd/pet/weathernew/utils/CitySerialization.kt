@@ -1,20 +1,21 @@
-package lmd.pet.weathernew.utils.serialization
+package lmd.pet.weathernew.utils
 
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
+import lmd.pet.weathernew.data.entity.response.cities.CityFields
 import java.lang.reflect.Type
 
-class CitySerialization: JsonSerializer<String> {
+class CitySerialization: JsonSerializer<CityFields> {
 
     override fun serialize(
-        src: String?,
+        src: CityFields?,
         typeOfSrc: Type?,
         context: JsonSerializationContext?
     ): JsonElement {
         return JsonObject().apply {
-            addProperty("id", src?.toInt() ?: 0)
+            addProperty("id", src?.id?.toInt() ?: 0)
         }
     }
 

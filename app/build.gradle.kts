@@ -51,35 +51,62 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+
+    buildFeatures {
+        compose = true
+    }
 }
 
+val androidList = listOf(
+    Dependencies.Android.coreKtx,
+    Dependencies.Android.appCompat,
+    Dependencies.Android.material,
+    Dependencies.Android.gson,
+    Dependencies.Kotlin.serialization,
+    Dependencies.Navigation.navigationCompose,
+    Dependencies.Android.retrofit,
+    Dependencies.Android.converter
+)
+
+val composeList = listOf(
+    Dependencies.Compose.ui,
+    Dependencies.Compose.material,
+    Dependencies.Compose.tooling,
+    Dependencies.Compose.livedata,
+    Dependencies.Compose.accompanist
+)
+
+val hiltList = listOf(
+    Dependencies.Hilt.android,
+    Dependencies.Hilt.navigation,
+    Dependencies.Hilt.compiler
+)
+
+val lifeCycleList = listOf(
+    Dependencies.Lifecycle.lifecycleKtx,
+    Dependencies.Lifecycle.viewModelCompose,
+    Dependencies.Lifecycle.activityCompose
+)
+
+val roomList = listOf(
+    Dependencies.Room.ktx,
+    Dependencies.Room.runtime,
+    Dependencies.Room.paging
+)
+
 dependencies {
-    implementation(Dependencies.Android.coreKtx)
-    implementation(Dependencies.Android.appCompat)
-    implementation(Dependencies.Android.material)
+    androidList.forEach { lib -> implementation(lib) }
+    composeList.forEach { lib -> implementation(lib) }
+    hiltList.forEach { lib -> implementation(lib) }
+    lifeCycleList.forEach { lib -> implementation(lib) }
+    roomList.forEach { lib -> implementation(lib) }
 
-    implementation(Dependencies.Compose.ui)
-    implementation(Dependencies.Compose.material)
-    implementation(Dependencies.Compose.tooling)
-    implementation(Dependencies.Compose.livedata)
-    implementation(Dependencies.Compose.accompanist)
-
-    implementation(Dependencies.Lifecycle.lifecycleKtx)
-    implementation(Dependencies.Lifecycle.viewModelCompose)
-    implementation(Dependencies.Lifecycle.activityCompose)
-    implementation(Dependencies.Navigation.navigationCompose)
-
-    implementation(Dependencies.Kotlin.serialization)
-
-    // Hilt
-    implementation(Dependencies.Hilt.android)
-    implementation(Dependencies.Hilt.navigation)
-    kapt(Dependencies.Hilt.compiler)
-
-    // Room
-    implementation(Dependencies.Room.ktx)
-    implementation(Dependencies.Room.runtime)
-    implementation(Dependencies.Room.paging)
     kapt(Dependencies.Room.compiler)
 
     testImplementation(Dependencies.Test.jUnit)

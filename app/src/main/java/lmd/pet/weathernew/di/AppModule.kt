@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import lmd.pet.weathernew.BuildConfig
 import lmd.pet.weathernew.data.api.CitiesApi
 import lmd.pet.weathernew.data.api.WeatherApi
-import lmd.pet.weathernew.utils.serialization.CitySerialization
+import lmd.pet.weathernew.utils.CitySerialization
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

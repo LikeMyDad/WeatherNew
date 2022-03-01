@@ -10,6 +10,9 @@ object Dependencies {
         const val toolingTest = "androidx.compose.ui:ui-tooling:$version"
         const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
 
+        const val activity = "androidx.activity:activity-compose:1.3.1"
+        const val viewModels = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+
         const val accompanist = "com.google.accompanist:accompanist-systemuicontroller:0.18.0"
     }
 
@@ -25,10 +28,10 @@ object Dependencies {
     }
 
     object Room {
-        private const val version = "2.3.0"
+        private const val version = "2.4.2"
         const val ktx = "androidx.room:room-ktx:$version"
         const val runtime = "androidx.room:room-runtime:$version"
-        const val paging = "androidx.room:room-paging:2.4.0-alpha04"
+        const val paging = "androidx.room:room-paging:$version"
         const val compiler = "androidx.room:room-compiler:$version"
     }
 
@@ -37,9 +40,14 @@ object Dependencies {
     }
 
     object Android {
+        private const val version_retrofit = "2.9.0"
+
         const val coreKtx = "androidx.core:core-ktx:1.6.0"
         const val appCompat = "androidx.appcompat:appcompat:1.3.1"
         const val material = "com.google.android.material:material:1.4.0"
+        const val gson = "com.google.code.gson:gson:2.9.0"
+        const val retrofit = "com.squareup.retrofit2:retrofit:$version_retrofit"
+        const val converter = "com.squareup.retrofit2:converter-gson:$version_retrofit"
     }
 
     object Lifecycle {
