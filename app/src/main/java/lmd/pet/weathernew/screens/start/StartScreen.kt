@@ -1,16 +1,15 @@
 package lmd.pet.weathernew.screens.start
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import lmd.pet.weathernew.screens.start.models.StartViewModel
 
-@Preview
 @Composable
-fun StartScreen() {
+fun StartScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    viewModel: StartViewModel
+) {
 
-    Text(
-        text = "TestText"
-    )
 }

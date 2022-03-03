@@ -1,6 +1,5 @@
 package lmd.pet.weathernew.screens.cities
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,26 +16,35 @@ class CitiesViewModel @Inject constructor(
     private val citiesUseCase: CitiesInteractor
 ) : ViewModel(), EventHandler<CitiesEvent> {
 
-    private val mutUiStateFlow = MutableLiveData<CitiesState>(CitiesState.Empty)
-    val uiStateFlow = mutUiStateFlow.readOnly()
+    private val mutStateLiveData = MutableLiveData<CitiesState>(CitiesState.Empty)
+    val stateLiveData = mutStateLiveData.readOnly()
 
-    init {
+    override fun obtainEvent(event: CitiesEvent) {
+        when(val currentState = mutStateLiveData.value) {
+            is CitiesState.Display -> reduce(event, currentState)
+        }
+    }
+
+    private fun reduce(event: CitiesEvent, state: CitiesState.Loading) {
+
+    }
+
+    private fun reduce(event: CitiesEvent, state: CitiesState.Display) {
+        when (event) {
+            is CitiesEvent.EnterScreen -> fetchCities()
+        }
+    }
+
+    private fun fetchCities() {
         citiesUseCase.execute(
             scope = viewModelScope,
             params = CitiesInteractor.Params(""),
             onPreExecute = {
-                mutUiStateFlow.value = CitiesState.Loading
+                mutStateLiveData.postValue(CitiesState.Loading)
             },
             onComplete = {
-                Log.d("CheckCities", ": $it")
+                mutStateLiveData.postValue(CitiesState.Display(it))
             }
         )
     }
-
-    override fun obtainEvent(event: CitiesEvent) {
-        when(event) {
-
-        }
-    }
-
 }
