@@ -16,8 +16,6 @@ import lmd.pet.weathernew.R
 @Composable
 fun StartViewDisplay(
     modifier: Modifier,
-    navController: NavController,
-    scaffoldState: ScaffoldState,
     onButtonLocationClick: () -> Unit
 ) {
     Surface(modifier = modifier.fillMaxSize()) {
@@ -47,8 +45,6 @@ fun StartViewDisplay(
 @Preview
 fun PreviewStartViewDisplay() {
     StartViewDisplay(
-        modifier = Modifier,
-        navController = rememberNavController(),
-        rememberScaffoldState()
+        modifier = Modifier
     ) {}
 }

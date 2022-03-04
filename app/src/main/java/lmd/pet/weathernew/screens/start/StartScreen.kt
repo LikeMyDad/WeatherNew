@@ -1,6 +1,7 @@
 package lmd.pet.weathernew.screens.start
 
 import android.Manifest
+import android.util.Log
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -8,6 +9,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import lmd.pet.weathernew.screens.general.models.PermissionAction
+import lmd.pet.weathernew.screens.general.views.DefaultSnackbar
 import lmd.pet.weathernew.screens.general.views.PermissionView
 import lmd.pet.weathernew.screens.start.models.StartEvent
 import lmd.pet.weathernew.screens.start.models.StartState
@@ -27,9 +29,7 @@ fun StartScreen(
 
     when (val state = viewState.value) {
         is StartState.Display -> StartViewDisplay(
-            modifier = modifier,
-            navController = navController,
-            scaffoldState = scaffoldState
+            modifier = modifier
         ) {
             viewModel.obtainEvent(StartEvent.Permission)
         }
@@ -46,6 +46,10 @@ fun StartScreen(
                         NavigationDest.CitiesScreen
 
                 navController.navigateByRoute(navigationDest)
+            }
+            
+            DefaultSnackbar(snackbarHostState = scaffoldState.snackbarHostState) {
+                scaffoldState.snackbarHostState.currentSnackbarData?.performAction()
             }
         }
     }

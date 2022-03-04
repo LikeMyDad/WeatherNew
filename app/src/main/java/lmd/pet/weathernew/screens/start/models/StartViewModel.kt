@@ -10,11 +10,20 @@ import javax.inject.Inject
 @HiltViewModel
 class StartViewModel @Inject constructor() : ViewModel(), EventHandler<StartEvent> {
 
-    private val mutStateLiveData = MutableLiveData<StartState>(StartState.Empty)
+    private val mutStateLiveData = MutableLiveData<StartState>(StartState.Display)
     val stateLiveData = mutStateLiveData.readOnly()
 
     override fun obtainEvent(event: StartEvent) {
-        TODO("Not yet implemented")
+        when(val currentState = mutStateLiveData.value) {
+            is StartState.Display -> reduce(event, currentState)
+        }
+    }
+
+    private fun reduce(event: StartEvent, state: StartState.Display) {
+        when(event) {
+            is StartEvent.Permission -> mutStateLiveData.postValue(StartState.Permission)
+            else -> {}
+        }
     }
 
 }
