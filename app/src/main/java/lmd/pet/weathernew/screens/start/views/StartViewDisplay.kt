@@ -1,27 +1,54 @@
 package lmd.pet.weathernew.screens.start.views
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Surface
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import lmd.pet.weathernew.R
 
 @Composable
 fun StartViewDisplay(
     modifier: Modifier,
-    navController: NavController
+    navController: NavController,
+    scaffoldState: ScaffoldState,
+    onButtonLocationClick: () -> Unit
 ) {
     Surface(modifier = modifier.fillMaxSize()) {
-        Image(painter = , contentDescription = )
+        Column(
+            modifier = modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_weather_playstore),
+                contentDescription = "",
+                alignment = Alignment.Center,
+                modifier = modifier.size(124.dp)
+            )
+            Text(text = "Test text for permission", modifier = modifier.padding(8.dp))
+            Button(
+                onClick = onButtonLocationClick,
+                modifier = modifier.padding(top = 12.dp)
+            ) {
+                Text(text = "Test")
+            }
+        }
     }
 }
 
 @Composable
 @Preview
 fun PreviewStartViewDisplay() {
-    StartViewDisplay(modifier = Modifier, navController = rememberNavController())
+    StartViewDisplay(
+        modifier = Modifier,
+        navController = rememberNavController(),
+        rememberScaffoldState()
+    ) {}
 }

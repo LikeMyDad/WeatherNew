@@ -10,7 +10,7 @@ import javax.inject.Inject
 @HiltViewModel
 class StartViewModel @Inject constructor() : ViewModel(), EventHandler<StartEvent> {
 
-    private val mutStateLiveData = MutableLiveData(StartState.Empty)
+    private val mutStateLiveData = MutableLiveData<StartState>(StartState.Empty)
     val stateLiveData = mutStateLiveData.readOnly()
 
     override fun obtainEvent(event: StartEvent) {

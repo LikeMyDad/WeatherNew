@@ -5,9 +5,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import lmd.pet.weathernew.data.entity.response.cities.Cities
 import lmd.pet.weathernew.screens.cities.models.CitiesEvent
 import lmd.pet.weathernew.screens.cities.models.CitiesState
+import lmd.pet.weathernew.screens.cities.models.CitiesViewModel
 import lmd.pet.weathernew.screens.cities.views.CitiesLoading
 import lmd.pet.weathernew.screens.cities.views.CitiesViewDisplay
 

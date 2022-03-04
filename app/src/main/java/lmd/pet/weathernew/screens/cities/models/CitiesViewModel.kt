@@ -1,4 +1,4 @@
-package lmd.pet.weathernew.screens.cities
+package lmd.pet.weathernew.screens.cities.models
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
