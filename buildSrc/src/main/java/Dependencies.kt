@@ -21,7 +21,7 @@ object Dependencies {
     }
 
     object Hilt {
-        const val version = "2.40.5"
+        const val version = "2.38.1"
         const val android = "com.google.dagger:hilt-android:$version"
         const val navigation = "androidx.hilt:hilt-navigation-compose:1.0.0-rc01"
         const val compiler = "com.google.dagger:hilt-compiler:$version"

@@ -84,8 +84,7 @@ val composeList = listOf(
 
 val hiltList = listOf(
     Dependencies.Hilt.android,
-    Dependencies.Hilt.navigation,
-    Dependencies.Hilt.compiler
+    Dependencies.Hilt.navigation
 )
 
 val lifeCycleList = listOf(
@@ -106,7 +105,7 @@ dependencies {
     hiltList.forEach { lib -> implementation(lib) }
     lifeCycleList.forEach { lib -> implementation(lib) }
     roomList.forEach { lib -> implementation(lib) }
-
+    kapt(Dependencies.Hilt.compiler)
     kapt(Dependencies.Room.compiler)
 
     testImplementation(Dependencies.Test.jUnit)
