@@ -1,5 +1,6 @@
 package lmd.pet.weathernew.screens.main
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -12,5 +13,6 @@ fun MainScreen(
     navController: NavController,
     viewModel: MainViewModel
 ) {
+    Log.d("Check", "MainScreen")
     MainViewDisplay()
 }

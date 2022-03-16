@@ -18,7 +18,7 @@ fun CitiesScreen(
     viewModel: CitiesViewModel
 ) {
     val viewState = viewModel.stateLiveData.observeAsState()
-
+    
     when (val state = viewState.value) {
         is CitiesState.Loading -> CitiesLoading()
         is CitiesState.Display -> CitiesViewDisplay(
