@@ -79,6 +79,7 @@ val composeList = listOf(
     Dependencies.Compose.material,
     Dependencies.Compose.tooling,
     Dependencies.Compose.livedata,
+    Dependencies.Compose.accompanistUI,
     Dependencies.Compose.accompanist
 )
 

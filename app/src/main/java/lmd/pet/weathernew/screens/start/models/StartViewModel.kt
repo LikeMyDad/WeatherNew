@@ -16,12 +16,20 @@ class StartViewModel @Inject constructor() : ViewModel(), EventHandler<StartEven
     override fun obtainEvent(event: StartEvent) {
         when(val currentState = mutStateLiveData.value) {
             is StartState.Display -> reduce(event, currentState)
+            is StartState.Permission -> reduce(event, currentState)
         }
     }
 
     private fun reduce(event: StartEvent, state: StartState.Display) {
         when(event) {
-            is StartEvent.Permission -> mutStateLiveData.postValue(StartState.Permission)
+            is StartEvent.RequestPermission -> mutStateLiveData.postValue(StartState.Permission)
+            else -> {}
+        }
+    }
+
+    private fun reduce(event: StartEvent, state: StartState.Permission) {
+        when(event) {
+            is StartEvent.PermissionChoose -> mutStateLiveData.postValue(StartState.Navigate(event.dest))
             else -> {}
         }
     }

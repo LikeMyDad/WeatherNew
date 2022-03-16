@@ -10,6 +10,8 @@ import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import lmd.pet.weathernew.screens.cities.CitiesScreen
 import lmd.pet.weathernew.screens.cities.models.CitiesViewModel
+import lmd.pet.weathernew.screens.main.MainScreen
+import lmd.pet.weathernew.screens.main.models.MainViewModel
 import lmd.pet.weathernew.screens.start.StartScreen
 import lmd.pet.weathernew.screens.start.models.StartViewModel
 import lmd.pet.weathernew.utils.NavHostByRoute
@@ -38,7 +40,8 @@ class MainActivity : ComponentActivity() {
                             CitiesScreen(navController = navController, viewModel = citiesViewModel)
                         }
                         composable(NavigationDest.MainScreen.dest) {
-
+                            val mainViewModel = hiltViewModel<MainViewModel>()
+                            MainScreen(navController = navController, viewModel = mainViewModel)
                         }
                     }
                 }
