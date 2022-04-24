@@ -51,6 +51,7 @@ object Dependencies {
         const val gson = "com.google.code.gson:gson:2.9.0"
         const val retrofit = "com.squareup.retrofit2:retrofit:$version_retrofit"
         const val converter = "com.squareup.retrofit2:converter-gson:$version_retrofit"
+        const val interceptor = "com.squareup.okhttp3:logging-interceptor:4.9.3"
     }
 
     object Lifecycle {

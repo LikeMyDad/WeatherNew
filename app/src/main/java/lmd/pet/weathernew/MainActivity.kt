@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,31 +27,20 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
 
             Surface {
-                NavHostByRoute(
-                    navController = navController,
-                    startDestination = NavigationDest.StartScreen
-                ) { builder ->
-                    with(builder) {
-                        composable(NavigationDest.StartScreen.dest) {
-                            val startViewModel = hiltViewModel<StartViewModel>()
-                            StartScreen(navController = navController, viewModel = startViewModel)
-                        }
-                        composable(NavigationDest.CitiesScreen.dest) {
-                            val citiesViewModel = hiltViewModel<CitiesViewModel>()
-                            CitiesScreen(navController = navController, viewModel = citiesViewModel)
-                        }
-                        composable(NavigationDest.MainScreen.dest) {
-                            val mainViewModel = hiltViewModel<MainViewModel>()
-                            MainScreen(navController = navController, viewModel = mainViewModel)
-                        }
+                NavHost(navController = navController, startDestination = "startScreen") {
+                    composable(NavigationDest.StartScreen.screen) {
+                        val startViewModel = hiltViewModel<StartViewModel>()
+                        StartScreen(navController = navController, viewModel = startViewModel)
+                    }
+                    composable(NavigationDest.CitiesScreen.screen) {
+                        val citiesViewModel = hiltViewModel<CitiesViewModel>()
+                        CitiesScreen(navController = navController, viewModel = citiesViewModel)
+                    }
+                    composable(NavigationDest.MainScreen.screen) {
+                        val mainViewModel = hiltViewModel<MainViewModel>()
+                        MainScreen(navController = navController, viewModel = mainViewModel)
                     }
                 }
-//                NavHost(navController = navController, startDestination = "startScreen") {
-//                    composable("startScreen") {
-//                        val startViewModel = hiltViewModel<StartViewModel>()
-//                        StartScreen(navController = navController, viewModel = startViewModel)
-//                    }
-//                }
             }
         }
     }

@@ -50,7 +50,7 @@ fun PreviewCitiesViewDisplay() {
         navController = rememberNavController(),
         viewState = CitiesState.Display(
             items = listOf(
-                CityModel(0, "Test", "GMT+3", listOf())
+                CityModel(0, "Test", "GMT+4", listOf())
             )
         )
     )

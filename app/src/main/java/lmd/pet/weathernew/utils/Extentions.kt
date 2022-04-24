@@ -38,11 +38,11 @@ fun NavHostByRoute(
     startDestination: NavigationDest,
     block: (NavGraphBuilder) -> Unit
 ) {
-    NavHost(navController = navController, startDestination = startDestination.dest) {
+    NavHost(navController = navController, startDestination = startDestination.screen) {
         block(this)
     }
 }
 
 fun NavController.navigateByRoute(
     destination: NavigationDest
-) =  navigate(destination.dest)
+) =  navigate(destination.screen)

@@ -10,7 +10,9 @@ import lmd.pet.weathernew.BuildConfig
 import lmd.pet.weathernew.data.api.CitiesApi
 import lmd.pet.weathernew.data.api.WeatherApi
 import lmd.pet.weathernew.utils.CitySerialization
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -28,8 +30,9 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providerOkHttpClient(): OkHttpClient {
+    fun providerOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
             .build()
     }
 
@@ -60,4 +63,8 @@ object AppModule {
             .create(CitiesApi::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideHttpLoggingInterceptor() =
+        HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) }
 }

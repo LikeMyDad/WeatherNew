@@ -71,7 +71,8 @@ val androidList = listOf(
     Dependencies.Kotlin.serialization,
     Dependencies.Navigation.navigationCompose,
     Dependencies.Android.retrofit,
-    Dependencies.Android.converter
+    Dependencies.Android.converter,
+    Dependencies.Android.interceptor
 )
 
 val composeList = listOf(

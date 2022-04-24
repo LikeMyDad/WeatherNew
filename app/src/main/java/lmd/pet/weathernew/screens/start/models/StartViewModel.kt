@@ -22,6 +22,7 @@ class StartViewModel @Inject constructor() : ViewModel(), EventHandler<StartEven
 
     private fun reduce(event: StartEvent, state: StartState.Display) {
         when(event) {
+            is StartEvent.EnterScreen -> {}
             is StartEvent.RequestPermission -> mutStateLiveData.postValue(StartState.Permission)
             else -> {}
         }
