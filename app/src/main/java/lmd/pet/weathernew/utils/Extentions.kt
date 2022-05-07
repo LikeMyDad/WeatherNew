@@ -3,15 +3,11 @@ package lmd.pet.weathernew.utils
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import androidx.compose.runtime.Composable
+import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import java.lang.NullPointerException
@@ -31,18 +27,3 @@ fun Context.shouldShowPermissionRationale(permission: String): Boolean {
         ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)
     } ?: throw NullPointerException("Activity is null")
 }
-
-@Composable
-fun NavHostByRoute(
-    navController: NavHostController,
-    startDestination: NavigationDest,
-    block: (NavGraphBuilder) -> Unit
-) {
-    NavHost(navController = navController, startDestination = startDestination.screen) {
-        block(this)
-    }
-}
-
-fun NavController.navigateByRoute(
-    destination: NavigationDest
-) =  navigate(destination.screen)

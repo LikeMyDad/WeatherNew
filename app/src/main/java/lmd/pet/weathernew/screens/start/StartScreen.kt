@@ -1,15 +1,14 @@
 package lmd.pet.weathernew.screens.start
 
 import android.util.Log
-import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.rememberMultiplePermissionsState
+import com.google.accompanist.permissions.MultiplePermissionsState
 import lmd.pet.weathernew.screens.start.models.StartEvent
 import lmd.pet.weathernew.screens.start.models.StartState
 import lmd.pet.weathernew.screens.start.models.StartViewModel
@@ -21,34 +20,30 @@ import lmd.pet.weathernew.utils.NavigationDest
 fun StartScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: StartViewModel
+    viewModel: StartViewModel,
+    multiplePermissionsState: MultiplePermissionsState
 ) {
-    val viewState = viewModel.stateLiveData.observeAsState()
-    val scaffoldState = rememberScaffoldState()
+    val viewState by viewModel.stateLiveData.collectAsState()
 
-    val multiplePermissionsState = rememberMultiplePermissionsState(
-        listOf(
-            android.Manifest.permission.READ_EXTERNAL_STORAGE,
-            android.Manifest.permission.CAMERA,
-        )
-    )
+    when (val state = viewState) {
+        is StartState.Display -> {
+            StartViewDisplay(
+                modifier = modifier
+            ) {
+                multiplePermissionsState.launchMultiplePermissionRequest()
+            }
 
-    Log.d("StartScreen", "Start")
-
-    StartViewDisplay(
-        modifier = modifier
-    ) {
-        multiplePermissionsState.launchMultiplePermissionRequest()
-    }
-
-    when (val state = viewState.value) {
+            if (multiplePermissionsState.revokedPermissions.isEmpty()
+                || multiplePermissionsState.shouldShowRationale) {
+                viewModel.obtainEvent(StartEvent.Permission)
+            }
+        }
         is StartState.Permission -> {
-
-//            if (multiplePermissionsState.allPermissionsGranted) {
-//                viewModel.obtainEvent(StartEvent.PermissionChoose(NavigationDest.MainScreen))
-//            } else {
-//                viewModel.obtainEvent(StartEvent.PermissionChoose(NavigationDest.CitiesScreen))
-//            }
+            if (multiplePermissionsState.allPermissionsGranted) {
+                viewModel.obtainEvent(StartEvent.Navigation(NavigationDest.MainScreen))
+            } else {
+                viewModel.obtainEvent(StartEvent.Navigation(NavigationDest.CitiesScreen))
+            }
         }
         is StartState.Navigate -> {
             navController.navigate(state.dest.screen)
@@ -59,23 +54,3 @@ fun StartScreen(
         viewModel.obtainEvent(StartEvent.EnterScreen)
     }
 }
-
-//
-//PermissionView(
-//permission = Manifest.permission.ACCESS_FINE_LOCATION,
-//permissionRational = "Test",
-//scaffoldState = scaffoldState
-//) {
-//    navController.navigate(NavigationDest.CitiesScreen.screen)
-//                val navigationDest =
-//                    if (it == PermissionAction.PermissionGranted)
-//                        NavigationDest.MainScreen
-//                    else
-//                        NavigationDest.CitiesScreen
-//
-//                viewModel.obtainEvent(StartEvent.PermissionChoose(navigationDest))
-//}
-
-//            DefaultSnackbar(snackbarHostState = scaffoldState.snackbarHostState) {
-//                scaffoldState.snackbarHostState.currentSnackbarData?.performAction()
-//            }
