@@ -1,6 +1,5 @@
 package lmd.pet.weathernew.screens.start
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -34,7 +33,8 @@ fun StartScreen(
             }
 
             if (multiplePermissionsState.revokedPermissions.isEmpty()
-                || multiplePermissionsState.shouldShowRationale) {
+                || multiplePermissionsState.shouldShowRationale
+            ) {
                 viewModel.obtainEvent(StartEvent.Permission)
             }
         }

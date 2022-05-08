@@ -1,9 +1,9 @@
 package lmd.pet.weathernew.screens.cities
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import lmd.pet.weathernew.screens.cities.models.CitiesEvent
@@ -18,13 +18,11 @@ fun CitiesScreen(
     navController: NavController,
     viewModel: CitiesViewModel
 ) {
-    val viewState = viewModel.stateLiveData.observeAsState()
+    val viewState by viewModel.stateLiveData.collectAsState()
 
-    Log.d("CitiesScreen", "Start")
-
-    when (val state = viewState.value) {
+    when (val state = viewState) {
         is CitiesState.Loading -> CitiesLoading()
-        is CitiesState.Display -> {
+        is CitiesState.DisplayCities -> {
             CitiesViewDisplay(
                 modifier = modifier,
                 navController = navController,
@@ -33,7 +31,7 @@ fun CitiesScreen(
         }
     }
 
-    LaunchedEffect(key1 = viewState, block = {
+    LaunchedEffect(key1 = viewState) {
         viewModel.obtainEvent(event = CitiesEvent.EnterScreen)
-    })
+    }
 }

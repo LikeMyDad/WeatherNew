@@ -2,7 +2,6 @@ package lmd.pet.weathernew.screens.cities.views
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Surface
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
@@ -18,7 +17,7 @@ import lmd.pet.weathernew.screens.cities.models.CitiesState
 fun CitiesViewDisplay(
     modifier: Modifier,
     navController: NavController,
-    viewState: CitiesState.Display
+    viewState: CitiesState.DisplayCities
 ) {
     Surface(modifier = modifier.fillMaxSize()) {
         Column {
@@ -48,7 +47,7 @@ fun PreviewCitiesViewDisplay() {
     CitiesViewDisplay(
         modifier = Modifier,
         navController = rememberNavController(),
-        viewState = CitiesState.Display(
+        viewState = CitiesState.DisplayCities(
             items = listOf(
                 CityModel(0, "Test", "GMT+4", listOf())
             )
