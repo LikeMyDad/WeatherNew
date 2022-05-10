@@ -1,46 +1,31 @@
 package lmd.pet.weathernew.screens.start.models
 
-import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import lmd.pet.weathernew.core.base.EventHandler
+import lmd.pet.weathernew.core.base.Reducer
+import lmd.pet.weathernew.core.base.BaseViewModel
+import lmd.pet.weathernew.utils.NavigationDest
 import javax.inject.Inject
 
 @HiltViewModel
-class StartViewModel @Inject constructor() : ViewModel(), EventHandler<StartEvent> {
+class StartViewModel @Inject constructor() : BaseViewModel<StartState, StartEvent>() {
 
-    private val mutStateLiveData = MutableStateFlow<StartState>(StartState.Empty)
-    val stateLiveData: StateFlow<StartState> = mutStateLiveData
-
-    override fun obtainEvent(event: StartEvent) {
-        when(val currentState = mutStateLiveData.value) {
-            is StartState.Empty -> reduce(event, currentState)
-            is StartState.Display -> reduce(event, currentState)
-            is StartState.Permission -> reduce(event, currentState)
+    private val startReducer =
+        object : Reducer<StartState, StartEvent>(initialValue = StartState.initial()) {
+            override fun reduce(state: StartState, event: StartEvent) {
+                when(event) {
+                    is StartEvent.EnterScreen -> {}
+                    is StartEvent.Navigation -> {}
+                }
+            }
         }
-    }
 
-    private fun reduce(event: StartEvent, state: StartState.Empty) {
-        when(event) {
-            is StartEvent.EnterScreen -> mutStateLiveData.value = StartState.Display
-            else -> {}
-        }
-    }
+    override val state: StateFlow<StartState>
+        get() = startReducer.stateFlow
 
-    private fun reduce(event: StartEvent, state: StartState.Display) {
-        when(event) {
-            is StartEvent.EnterScreen -> {}
-            is StartEvent.Permission -> mutStateLiveData.value = StartState.Permission
-            else -> {}
-        }
-    }
-
-    private fun reduce(event: StartEvent, state: StartState.Permission) {
-        when(event) {
-            is StartEvent.Navigation -> mutStateLiveData.value = StartState.Navigate(event.dest)
-            else -> {}
-        }
+    private fun sendEvent(event: StartEvent) {
+        startReducer.sendEvent(event)
     }
 
 }

@@ -8,22 +8,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import lmd.pet.weathernew.screens.cities.models.CitiesState
 
 @Composable
 fun CitiesViewDisplay(
     modifier: Modifier,
-    navController: NavController,
-    viewState: CitiesState.DisplayCities
+    viewState: CitiesState.DisplayCities,
+    onValueChange: (query: String) -> Unit
 ) {
     Surface(modifier = modifier.fillMaxSize()) {
         Column {
             TextField(
                 value = "",
-                onValueChange = {},
+                onValueChange = onValueChange,
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(horizontal = 12.dp, vertical = 16.dp)
@@ -46,11 +44,11 @@ fun CitiesViewDisplay(
 fun PreviewCitiesViewDisplay() {
     CitiesViewDisplay(
         modifier = Modifier,
-        navController = rememberNavController(),
         viewState = CitiesState.DisplayCities(
             items = listOf(
                 CityModel(0, "Test", "GMT+4", listOf())
             )
-        )
+        ),
+        onValueChange = {}
     )
 }

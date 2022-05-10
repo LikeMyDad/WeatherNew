@@ -2,9 +2,11 @@ package lmd.pet.weathernew
 
 import android.Manifest
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,24 +31,17 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
 
-            val locationPermission = rememberMultiplePermissionsState(
-                listOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                )
-            )
-
             Surface {
-                NavHost(navController = navController, startDestination = "startScreen") {
-                    composable(NavigationDest.StartScreen.screen) {
+                NavHost(navController = navController, startDestination = NavigationDest.StartScreen.name) {
+                    composable(NavigationDest.StartScreen.name) {
                         val startViewModel = hiltViewModel<StartViewModel>()
-                        StartScreen(navController = navController, viewModel = startViewModel, multiplePermissionsState = locationPermission)
+                        StartScreen(navController = navController, viewModel = startViewModel)
                     }
-                    composable(NavigationDest.CitiesScreen.screen) {
+                    composable(NavigationDest.CitiesScreen.name) {
                         val citiesViewModel = hiltViewModel<CitiesViewModel>()
                         CitiesScreen(navController = navController, viewModel = citiesViewModel)
                     }
-                    composable(NavigationDest.MainScreen.screen) {
+                    composable(NavigationDest.MainScreen.name) {
                         val mainViewModel = hiltViewModel<MainViewModel>()
                         MainScreen(navController = navController, viewModel = mainViewModel)
                     }

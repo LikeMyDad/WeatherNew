@@ -1,12 +1,11 @@
 package lmd.pet.weathernew.screens.cities
 
+import android.util.Log
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import lmd.pet.weathernew.screens.cities.models.CitiesEvent
 import lmd.pet.weathernew.screens.cities.models.CitiesState
 import lmd.pet.weathernew.screens.cities.models.CitiesViewModel
 import lmd.pet.weathernew.screens.cities.views.CitiesLoading
@@ -18,20 +17,18 @@ fun CitiesScreen(
     navController: NavController,
     viewModel: CitiesViewModel
 ) {
-    val viewState by viewModel.stateLiveData.collectAsState()
+    val viewState by viewModel.state.collectAsState()
 
-    when (val state = viewState) {
-        is CitiesState.Loading -> CitiesLoading()
-        is CitiesState.DisplayCities -> {
-            CitiesViewDisplay(
-                modifier = modifier,
-                navController = navController,
-                viewState = state
-            )
-        }
+    val callbackTest: (query: String) -> Unit = { query ->
+        Log.d("CheckCities", query)
     }
 
-    LaunchedEffect(key1 = viewState) {
-        viewModel.obtainEvent(event = CitiesEvent.EnterScreen)
+    when(val state = viewState) {
+        is CitiesState.Loading -> CitiesLoading()
+        is CitiesState.DisplayCities -> CitiesViewDisplay(
+            modifier = modifier,
+            viewState = state,
+            onValueChange = callbackTest
+        )
     }
 }

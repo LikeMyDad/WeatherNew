@@ -1,9 +1,11 @@
 package lmd.pet.weathernew.screens.start.models
 
+import androidx.compose.runtime.Immutable
+import lmd.pet.weathernew.core.base.UiEvent
 import lmd.pet.weathernew.utils.NavigationDest
 
-sealed class StartEvent {
+@Immutable
+sealed class StartEvent : UiEvent {
     object EnterScreen : StartEvent()
-    object Permission : StartEvent()
     data class Navigation(val dest: NavigationDest) : StartEvent()
 }

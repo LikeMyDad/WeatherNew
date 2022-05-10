@@ -3,14 +3,12 @@ package lmd.pet.weathernew.utils
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import java.lang.NullPointerException
 
 fun <T> MutableStateFlow<T>.readOnly(): StateFlow<T> = this
 

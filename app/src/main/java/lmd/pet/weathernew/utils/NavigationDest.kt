@@ -1,5 +1,5 @@
 package lmd.pet.weathernew.utils
 
-enum class NavigationDest(val screen: String) {
-    StartScreen("startScreen"), CitiesScreen("citiesScreen"), MainScreen("mainScreen")
+enum class NavigationDest {
+    StartScreen, CitiesScreen, MainScreen, NO_DEST
 }
