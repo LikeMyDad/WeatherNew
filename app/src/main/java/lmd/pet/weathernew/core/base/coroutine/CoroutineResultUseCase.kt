@@ -1,11 +1,10 @@
-package lmd.pet.weathernew.core.base
+package lmd.pet.weathernew.core.base.coroutine
 
 import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 abstract class CoroutineResultUseCase<Result, Params> : BaseCoroutineUseCase<Result, Params>() {
-
     fun execute(
         scope: CoroutineScope = mainScope,
         params: Params? = null,
@@ -25,5 +24,4 @@ abstract class CoroutineResultUseCase<Result, Params> : BaseCoroutineUseCase<Res
             onPostExecute()
         }
     }
-
 }

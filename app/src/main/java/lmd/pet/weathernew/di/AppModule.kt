@@ -9,6 +9,9 @@ import dagger.hilt.components.SingletonComponent
 import lmd.pet.weathernew.BuildConfig
 import lmd.pet.weathernew.data.api.CitiesApi
 import lmd.pet.weathernew.data.api.WeatherApi
+import lmd.pet.weathernew.data.dataSource.cities.CitiesDataSource
+import lmd.pet.weathernew.data.repositories.CitiesRepository
+import lmd.pet.weathernew.data.repositories.CitiesRepositoryImpl
 import lmd.pet.weathernew.utils.CitySerialization
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -20,6 +23,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideCitiesRepository(dataSource: CitiesDataSource): CitiesRepository =
+        CitiesRepositoryImpl(dataSource)
 
     @Provides
     fun provideGsonCity(): Gson {

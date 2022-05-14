@@ -8,5 +8,6 @@ data class CityModel(
     @PrimaryKey val id: Int,
     val cityName: String,
     val timeZone: String,
-    val coordCity: List<Double>
+    val coordCity: List<Double>,
+    val isShowCityWeather: Boolean = false
 )

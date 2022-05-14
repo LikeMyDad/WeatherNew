@@ -11,11 +11,11 @@ class CitiesNetwork @Inject constructor(
     private val service: CitiesApi
 ) : Network() {
 
-    suspend fun getCities(): CitiesResponse {
+    suspend fun getCities(page: Int, query: String): CitiesResponse {
         return makeRequest {
             service.getCities(
-                page = 0,
-                query = ""
+                page = page,
+                query = query
             )
         }
     }

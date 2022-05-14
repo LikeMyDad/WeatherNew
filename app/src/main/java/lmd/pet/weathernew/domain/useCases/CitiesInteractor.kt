@@ -1,6 +1,6 @@
 package lmd.pet.weathernew.domain.useCases
 
-import lmd.pet.weathernew.core.base.CoroutineResultUseCase
+import lmd.pet.weathernew.core.base.coroutine.CoroutineResultUseCase
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import lmd.pet.weathernew.data.repositories.CitiesRepository
 import java.lang.NullPointerException
@@ -12,11 +12,12 @@ class CitiesInteractor @Inject constructor(
 
     override suspend fun executeOnBackground(params: Params?): List<CityModel> {
         return params?.let {
-            repository.getCities()
-        } ?: throw NullPointerException("NeedParams")
+            repository.getCities(page = it.page, query = it.query)
+        } ?: throw NullPointerException("Need Params")
     }
 
     data class Params(
-        val todo: String
+        val query: String,
+        val page: Int = 0
     )
 }

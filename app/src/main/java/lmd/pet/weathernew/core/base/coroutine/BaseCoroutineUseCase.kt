@@ -1,9 +1,9 @@
-package lmd.pet.weathernew.core.base
+package lmd.pet.weathernew.core.base.coroutine
 
 import kotlinx.coroutines.*
 import java.util.concurrent.CancellationException
 
-abstract class BaseCoroutineUseCase<Result, Params> {
+abstract class BaseCoroutineUseCase<out Result,in Params> {
 
     protected val mainScope: CoroutineScope by lazy { CoroutineScope(Dispatchers.Main) }
     private val asyncJob = SupervisorJob()
