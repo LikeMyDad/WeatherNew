@@ -1,25 +1,21 @@
 package lmd.pet.weathernew
 
-import android.Manifest
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import dagger.hilt.android.AndroidEntryPoint
-import lmd.pet.weathernew.screens.cities.CitiesScreen
-import lmd.pet.weathernew.screens.cities.models.CitiesViewModel
-import lmd.pet.weathernew.screens.main.MainScreen
-import lmd.pet.weathernew.screens.main.models.MainViewModel
-import lmd.pet.weathernew.screens.start.StartScreen
-import lmd.pet.weathernew.screens.start.models.StartViewModel
+import lmd.pet.weathernew.ui.screens.cities.CitiesScreen
+import lmd.pet.weathernew.ui.screens.cities.models.CitiesViewModel
+import lmd.pet.weathernew.ui.screens.main.MainScreen
+import lmd.pet.weathernew.ui.screens.main.models.MainViewModel
+import lmd.pet.weathernew.ui.screens.start.StartScreen
+import lmd.pet.weathernew.ui.screens.start.models.StartViewModel
 import lmd.pet.weathernew.utils.NavigationDest
 
 @ExperimentalPermissionsApi

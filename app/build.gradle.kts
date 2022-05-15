@@ -27,9 +27,9 @@ android {
             useSupportLibrary = true
         }
 
-        buildConfigField("String", "weatherUrl", "\"${getWeatherKey()}\"")
+        buildConfigField("String", "weatherKey", "\"${getWeatherKey()}\"")
         buildConfigField("String", "citiesUrl", "\"${getCitiesUrl()}\"")
-        buildConfigField("String", "weatherKey", "\"${getWeatherUrl()}\"")
+        buildConfigField("String", "weatherUrl", "\"${getWeatherUrl()}\"")
 
     }
 

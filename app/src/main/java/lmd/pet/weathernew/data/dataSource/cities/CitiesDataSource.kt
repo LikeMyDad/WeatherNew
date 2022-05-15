@@ -1,6 +1,5 @@
 package lmd.pet.weathernew.data.dataSource.cities
 
-import android.util.Log
 import lmd.pet.weathernew.core.network.CitiesNetwork
 import lmd.pet.weathernew.data.dataBase.CitiesDataBase
 import lmd.pet.weathernew.data.dataSource.mapper.toModel
@@ -27,6 +26,10 @@ class CitiesDataSource @Inject constructor(
 
     suspend fun setStateToShowCityWeather(id: Int, isShowCityWeather: Boolean) {
         dataBase.getCitiesDao().setStateShowCityWeatherById(id, isShowCityWeather)
+    }
+
+    suspend fun getCitiesWeather(): List<CityModel> {
+        return dataBase.getCitiesDao().getCitiesWeather()
     }
 
     private suspend fun <T> fillDbOrGetQueryCities(
