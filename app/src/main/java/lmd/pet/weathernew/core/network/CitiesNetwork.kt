@@ -6,8 +6,7 @@ import lmd.pet.weathernew.data.api.CitiesApi
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class CitiesNetwork @Inject constructor(
+class CitiesNetwork (
     private val service: CitiesApi
 ) : Network() {
 

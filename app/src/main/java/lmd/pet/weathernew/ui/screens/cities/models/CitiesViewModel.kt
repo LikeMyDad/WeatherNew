@@ -1,16 +1,13 @@
 package lmd.pet.weathernew.ui.screens.cities.models
 
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
 import lmd.pet.weathernew.core.base.BaseViewModel
 import lmd.pet.weathernew.core.base.Reducer
 import lmd.pet.weathernew.domain.useCases.cities.GetCitiesInteractor
 import lmd.pet.weathernew.domain.useCases.cities.SetStateToShowCityWeatherInteractor
-import javax.inject.Inject
 
-@HiltViewModel
-class CitiesViewModel @Inject constructor(
+class CitiesViewModel(
     private val citiesUseCase: GetCitiesInteractor,
     private val setStateToShowCityWeatherUseCase: SetStateToShowCityWeatherInteractor
 ) : BaseViewModel<CitiesState, CitiesEvent>() {

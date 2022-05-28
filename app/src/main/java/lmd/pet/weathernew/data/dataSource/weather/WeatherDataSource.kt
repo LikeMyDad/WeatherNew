@@ -9,8 +9,8 @@ import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class WeatherDataSource @Inject constructor(
+
+class WeatherDataSource(
     private val network: WeatherNetwork,
     private val dataBase: CitiesDataBase
 ) {
