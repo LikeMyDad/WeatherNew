@@ -6,9 +6,6 @@ import lmd.pet.weathernew.data.entity.response.weather.DailyWeather
 import lmd.pet.weathernew.utils.network.onError
 import lmd.pet.weathernew.utils.network.onSuccess
 import java.lang.Exception
-import javax.inject.Inject
-import javax.inject.Singleton
-
 
 class WeatherDataSource(
     private val network: WeatherNetwork,

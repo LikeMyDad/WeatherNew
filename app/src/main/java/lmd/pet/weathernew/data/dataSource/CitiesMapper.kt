@@ -1,4 +1,4 @@
-package lmd.pet.weathernew.data.dataSource.mapper
+package lmd.pet.weathernew.data.dataSource
 
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import lmd.pet.weathernew.data.entity.response.cities.CityFields

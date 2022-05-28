@@ -4,7 +4,6 @@ import lmd.pet.weathernew.core.base.coroutine.CoroutineResultUseCase
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import lmd.pet.weathernew.data.repositories.city.CitiesRepository
 import java.lang.NullPointerException
-import javax.inject.Inject
 
 class GetCitiesInteractor(
     private val repository: CitiesRepository

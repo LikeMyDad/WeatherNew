@@ -1,7 +1,6 @@
 package lmd.pet.weathernew.data.entity.dao.cities
 
 import androidx.room.*
-import lmd.pet.weathernew.data.entity.response.cities.Cities
 
 @Dao
 interface CitiesDao {

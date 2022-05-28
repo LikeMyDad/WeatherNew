@@ -23,4 +23,4 @@ data class CurrentWeather(
     val windDeg: Int,
     @SerializedName("weather")
     val weatherIcon: List<CurrentWeatherIcon>
-    ): Serializable
+) : Serializable

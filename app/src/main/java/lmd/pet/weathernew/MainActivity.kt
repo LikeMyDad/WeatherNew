@@ -1,15 +1,12 @@
 package lmd.pet.weathernew
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.Surface
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import dagger.hilt.android.AndroidEntryPoint
 import lmd.pet.weathernew.ui.screens.cities.CitiesScreen
 import lmd.pet.weathernew.ui.screens.cities.models.CitiesViewModel
 import lmd.pet.weathernew.ui.screens.main.MainScreen
@@ -17,11 +14,9 @@ import lmd.pet.weathernew.ui.screens.main.models.MainViewModel
 import lmd.pet.weathernew.ui.screens.start.StartScreen
 import lmd.pet.weathernew.ui.screens.start.models.StartViewModel
 import lmd.pet.weathernew.utils.NavigationDest
-import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.compose.koinViewModel
 
-@ExperimentalPermissionsApi
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

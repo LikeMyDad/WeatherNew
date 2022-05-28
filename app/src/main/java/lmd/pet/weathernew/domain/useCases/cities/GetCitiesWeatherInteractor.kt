@@ -3,7 +3,6 @@ package lmd.pet.weathernew.domain.useCases.cities
 import lmd.pet.weathernew.core.base.coroutine.CoroutineResultUseCase
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import lmd.pet.weathernew.data.repositories.city.CitiesRepository
-import javax.inject.Inject
 
 class GetCitiesWeatherInteractor(
     private val repository: CitiesRepository

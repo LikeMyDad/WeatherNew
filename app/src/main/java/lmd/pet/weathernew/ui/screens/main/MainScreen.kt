@@ -1,6 +1,5 @@
 package lmd.pet.weathernew.ui.screens.main
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -22,8 +21,7 @@ fun MainScreen(
     when(val state = viewState) {
         is MainState.Loading -> Loading()
         is MainState.DisplayCityWeather -> {
-            MainViewDisplay()
-            Log.d("CityWeather", "${state.weather}")
+            MainViewDisplay(modifier, state.weather)
         }
     }
 

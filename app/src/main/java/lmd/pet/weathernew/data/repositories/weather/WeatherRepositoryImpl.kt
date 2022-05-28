@@ -2,7 +2,6 @@ package lmd.pet.weathernew.data.repositories.weather
 
 import lmd.pet.weathernew.data.dataSource.weather.WeatherDataSource
 import lmd.pet.weathernew.data.entity.response.weather.DailyWeather
-import javax.inject.Inject
 
 class WeatherRepositoryImpl(
     private val dataSource: WeatherDataSource

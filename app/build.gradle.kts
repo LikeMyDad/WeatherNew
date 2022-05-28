@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-    id("dagger.hilt.android.plugin")
     kotlin("plugin.serialization") version "1.5.30"
     kotlin("android")
     kotlin("kapt")
@@ -84,11 +83,6 @@ val composeList = listOf(
     Dependencies.Compose.accompanist
 )
 
-val hiltList = listOf(
-    Dependencies.Hilt.android,
-    Dependencies.Hilt.navigation
-)
-
 val lifeCycleList = listOf(
     Dependencies.Lifecycle.lifecycleKtx,
     Dependencies.Lifecycle.viewModelCompose,
@@ -107,15 +101,18 @@ val koinList = listOf(
     Dependencies.Koin.koin_navigation
 )
 
+val coilList = listOf(
+    Dependencies.Coil.coilCompose
+)
+
 dependencies {
     androidList.forEach { lib -> implementation(lib) }
     composeList.forEach { lib -> implementation(lib) }
-    hiltList.forEach { lib -> implementation(lib) }
     lifeCycleList.forEach { lib -> implementation(lib) }
     roomList.forEach { lib -> implementation(lib) }
     koinList.forEach { lib -> implementation(lib) }
+    coilList.forEach { lib -> implementation(lib) }
 
-    kapt(Dependencies.Hilt.compiler)
     kapt(Dependencies.Room.compiler)
 
     testImplementation(Dependencies.Test.jUnit)
