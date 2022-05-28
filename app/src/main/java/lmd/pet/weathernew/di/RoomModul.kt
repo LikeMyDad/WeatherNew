@@ -12,7 +12,7 @@ import lmd.pet.weathernew.data.entity.dao.cities.CitiesDao
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RoomModule {
+object RoomModul {
 
     @Provides
     fun provideCitiesDataBase(@ApplicationContext context: Context): CitiesDataBase =

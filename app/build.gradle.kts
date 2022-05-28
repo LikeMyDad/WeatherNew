@@ -101,12 +101,20 @@ val roomList = listOf(
     Dependencies.Room.paging
 )
 
+val koinList = listOf(
+    Dependencies.Koin.koin,
+    Dependencies.Koin.koin_compose,
+    Dependencies.Koin.koin_navigation
+)
+
 dependencies {
     androidList.forEach { lib -> implementation(lib) }
     composeList.forEach { lib -> implementation(lib) }
     hiltList.forEach { lib -> implementation(lib) }
     lifeCycleList.forEach { lib -> implementation(lib) }
     roomList.forEach { lib -> implementation(lib) }
+    koinList.forEach { lib -> implementation(lib) }
+
     kapt(Dependencies.Hilt.compiler)
     kapt(Dependencies.Room.compiler)
 

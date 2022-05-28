@@ -30,6 +30,14 @@ object Dependencies {
         const val compiler = "com.google.dagger:hilt-compiler:$version"
     }
 
+    object Koin {
+        const val koin_version= "3.2.0"
+        const val koin = "io.insert-koin:koin-android:$koin_version"
+        const val koin_navigation = "io.insert-koin:koin-androidx-navigation:$koin_version"
+        const val koin_compose = "io.insert-koin:koin-androidx-compose:$koin_version"
+
+    }
+
     object Room {
         private const val version = "2.4.2"
         const val ktx = "androidx.room:room-ktx:$version"
