@@ -2,6 +2,8 @@ package lmd.pet.weathernew.di.weather
 
 import lmd.pet.weathernew.BuildConfig
 import lmd.pet.weathernew.data.api.WeatherApi
+import lmd.pet.weathernew.di.networkModule
+import org.koin.core.context.loadKoinModules
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit

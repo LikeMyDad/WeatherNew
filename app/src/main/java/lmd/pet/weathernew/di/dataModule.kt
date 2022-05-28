@@ -5,5 +5,8 @@ import lmd.pet.weathernew.di.weather.weatherDataModule
 import org.koin.dsl.module
 
 val dataModule = module {
-    includes(citiesDataModule, weatherDataModule)
+    includes(
+        citiesDataModule,
+        weatherDataModule
+    )
 }

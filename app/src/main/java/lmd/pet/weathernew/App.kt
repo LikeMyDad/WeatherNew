@@ -15,12 +15,12 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 appModule,
-                networkModule,
+                domainModule,
                 roomModule,
                 repositoryModule,
-                domainModule,
                 viewModelModule,
-                dataModule
+                dataModule,
+                networkModule
             )
         }
     }
