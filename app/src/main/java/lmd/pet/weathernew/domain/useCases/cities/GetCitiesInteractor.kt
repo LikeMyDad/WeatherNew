@@ -6,7 +6,7 @@ import lmd.pet.weathernew.data.repositories.city.CitiesRepository
 import java.lang.NullPointerException
 import javax.inject.Inject
 
-class GetCitiesInteractor @Inject constructor(
+class GetCitiesInteractor(
     private val repository: CitiesRepository
 ): CoroutineResultUseCase<List<CityModel>, GetCitiesInteractor.Params>() {
 

@@ -5,7 +5,7 @@ import lmd.pet.weathernew.data.entity.response.weather.DailyWeather
 import lmd.pet.weathernew.data.repositories.weather.WeatherRepository
 import javax.inject.Inject
 
-class GetCityWeatherInteractor @Inject constructor(
+class GetCityWeatherInteractor(
     private val repository: WeatherRepository
 ): CoroutineResultUseCase<DailyWeather, GetCityWeatherInteractor.Params>() {
 

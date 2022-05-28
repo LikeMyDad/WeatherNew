@@ -5,7 +5,7 @@ import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import lmd.pet.weathernew.data.repositories.city.CitiesRepository
 import javax.inject.Inject
 
-class GetCitiesWeatherInteractor @Inject constructor(
+class GetCitiesWeatherInteractor(
     private val repository: CitiesRepository
 ): CoroutineResultUseCase<List<CityModel>, Unit>() {
     override suspend fun executeOnBackground(params: Unit?): List<CityModel> {

@@ -1,14 +1,11 @@
 package lmd.pet.weathernew.ui.screens.start.models
 
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
-import lmd.pet.weathernew.core.base.Reducer
 import lmd.pet.weathernew.core.base.BaseViewModel
+import lmd.pet.weathernew.core.base.Reducer
 import lmd.pet.weathernew.utils.NavigationDest
-import javax.inject.Inject
 
-@HiltViewModel
-class StartViewModel @Inject constructor() : BaseViewModel<StartState, StartEvent>() {
+class StartViewModel : BaseViewModel<StartState, StartEvent>() {
 
     private val startReducer =
         object : Reducer<StartState, StartEvent>(initialValue = StartState.Empty) {

@@ -17,9 +17,10 @@ import lmd.pet.weathernew.ui.screens.main.models.MainViewModel
 import lmd.pet.weathernew.ui.screens.start.StartScreen
 import lmd.pet.weathernew.ui.screens.start.models.StartViewModel
 import lmd.pet.weathernew.utils.NavigationDest
+import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @ExperimentalPermissionsApi
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,15 +31,15 @@ class MainActivity : ComponentActivity() {
             Surface {
                 NavHost(navController = navController, startDestination = NavigationDest.StartScreen.name) {
                     composable(NavigationDest.StartScreen.name) {
-                        val startViewModel = hiltViewModel<StartViewModel>()
+                        val startViewModel = koinViewModel<StartViewModel>()
                         StartScreen(navController = navController, viewModel = startViewModel)
                     }
                     composable(NavigationDest.CitiesScreen.name) {
-                        val citiesViewModel = hiltViewModel<CitiesViewModel>()
+                        val citiesViewModel = koinViewModel<CitiesViewModel>()
                         CitiesScreen(navController = navController, viewModel = citiesViewModel)
                     }
                     composable(NavigationDest.MainScreen.name) {
-                        val mainViewModel = hiltViewModel<MainViewModel>()
+                        val mainViewModel = koinViewModel<MainViewModel>()
                         MainScreen(navController = navController, viewModel = mainViewModel)
                     }
                 }

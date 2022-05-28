@@ -12,7 +12,7 @@ import lmd.pet.weathernew.utils.Converters
     version = 1
 )
 @TypeConverters(Converters::class)
-abstract class CitiesDataBase: RoomDatabase() {
+abstract class CitiesDataBase : RoomDatabase() {
 
     abstract fun getCitiesDao(): CitiesDao
 

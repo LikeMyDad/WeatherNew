@@ -5,11 +5,8 @@ import lmd.pet.weathernew.data.dataBase.CitiesDataBase
 import lmd.pet.weathernew.data.dataSource.mapper.toModel
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import lmd.pet.weathernew.utils.network.onSuccess
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class CitiesDataSource @Inject constructor(
+class CitiesDataSource(
     private val network: CitiesNetwork,
     private val dataBase: CitiesDataBase
 ) {

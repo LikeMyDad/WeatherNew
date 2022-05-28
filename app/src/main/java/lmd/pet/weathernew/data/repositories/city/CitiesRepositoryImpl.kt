@@ -4,9 +4,9 @@ import lmd.pet.weathernew.data.dataSource.cities.CitiesDataSource
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import javax.inject.Inject
 
-class CitiesRepositoryImpl @Inject constructor(
+class CitiesRepositoryImpl(
     private val dataSource: CitiesDataSource
-): CitiesRepository {
+) : CitiesRepository {
     override suspend fun getCities(page: Int, query: String): List<CityModel> {
         return try {
             dataSource.getCities(page, query)
@@ -18,7 +18,7 @@ class CitiesRepositoryImpl @Inject constructor(
     override suspend fun setCityWeather(id: Int, isShowCityWeather: Boolean) {
         return try {
             dataSource.setStateToShowCityWeather(id, isShowCityWeather)
-        }  catch (e: Exception) {
+        } catch (e: Exception) {
             TODO("Custom exception")
         }
     }

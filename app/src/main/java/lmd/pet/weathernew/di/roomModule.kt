@@ -18,5 +18,4 @@ val roomModule = module {
 
     single { provideCitiesDataBase(get()) }
     single { provideCitiesDao(get()) }
-
 }
