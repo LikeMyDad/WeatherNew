@@ -10,8 +10,6 @@ val appModule = module {
     single { provideInterceptor() }
     single { provideClient(get()) }
     single(named("RetrofitBuilder")) { provideRetrofitBuilder(get()) }
-
-    single(named("WeatherIconUrl")) { "http://openweathermap.org/img/wn/" }
 }
 
 private fun provideInterceptor() =

@@ -29,6 +29,7 @@ android {
         buildConfigField("String", "weatherKey", "\"${getWeatherKey()}\"")
         buildConfigField("String", "citiesUrl", "\"${getCitiesUrl()}\"")
         buildConfigField("String", "weatherUrl", "\"${getWeatherUrl()}\"")
+        buildConfigField("String", "weatherIconUrl", "\"${getWeatherIconUrl()}\"")
 
     }
 

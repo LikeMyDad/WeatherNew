@@ -34,7 +34,8 @@ class MainViewModel(
     override val state: StateFlow<MainState>
         get() = reducer.stateFlow
 
-    private val mutCitiesLiveData = MutableStateFlow(emptyList<CityModel>())
+    private val mutCitiesStateFlow = MutableStateFlow(emptyList<CityModel>())
+    val citiesStateFlow: StateFlow<List<CityModel>> = mutCitiesStateFlow
 
     init {
         sendEvent(MainEvent.EnterScreen)
@@ -47,7 +48,7 @@ class MainViewModel(
                 sendEvent(MainEvent.Loading)
             },
             onComplete = { cities ->
-                mutCitiesLiveData.value = cities
+                mutCitiesStateFlow.value = cities
                 getCityWeather(cities.first().id)
             },
             onError = { throwable ->

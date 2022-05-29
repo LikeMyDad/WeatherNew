@@ -8,4 +8,13 @@ data class CurrentWeatherIcon (
     val icon: String,
     @SerializedName("main")
     val mainWeatherIcon: String
-)
+) {
+    companion object {
+        fun initial() = CurrentWeatherIcon(
+            id = 2,
+            description = "asd",
+            icon = "02d",
+            mainWeatherIcon = "02d"
+        )
+    }
+}

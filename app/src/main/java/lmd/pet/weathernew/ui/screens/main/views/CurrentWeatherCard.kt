@@ -1,27 +1,54 @@
 package lmd.pet.weathernew.ui.screens.main.views
 
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.Card
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import lmd.pet.weathernew.data.entity.response.weather.current.CurrentWeather
-import org.koin.androidx.compose.get
-import org.koin.core.qualifier.named
+import lmd.pet.weathernew.data.repositories.image.ImageRepository
+import lmd.pet.weathernew.utils.enum.Image
+import org.koin.androidx.compose.inject
 
 @Composable
-fun CurrentWeatherCard(
+fun CurrentWeatherView(
     modifier: Modifier,
-    currentWeather: CurrentWeather
+    currentWeather: CurrentWeather,
+    cityName: String
 ) {
-    val baseIconUrl = get<String>(named("WeatherIconUrl"))
+    val imageRepository: ImageRepository by inject()
 
-    Card {
+    Row(modifier = modifier.wrapContentSize()) {
+        Column {
+            Text(text = cityName)
+        }
         AsyncImage(
-            model = baseIconUrl + currentWeather.weatherIcon.first().icon + ".png",
+            model = imageRepository.generateImageUrl(
+                iconId = currentWeather.weatherIcon.first().icon,
+                size = Image.Size.BIG,
+                format = Image.Format.PNG
+            ),
             contentDescription = "",
-            modifier = modifier.size(75.dp)
+            alignment = Alignment.CenterEnd
         )
     }
+}
+
+@Preview
+@Composable
+fun CurrentWeatherPreview(
+    modifier: Modifier = Modifier,
+    currentWeather: CurrentWeather = CurrentWeather.initial(),
+    cityName: String = "TestCity"
+) {
+    CurrentWeatherView(
+        modifier = modifier,
+        currentWeather = currentWeather,
+        cityName = cityName
+    )
 }

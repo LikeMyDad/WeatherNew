@@ -21,7 +21,8 @@ fun MainScreen(
     when(val state = viewState) {
         is MainState.Loading -> Loading()
         is MainState.DisplayCityWeather -> {
-            MainViewDisplay(modifier, state.weather)
+            val currentCity = viewModel.citiesStateFlow.collectAsState().value.first()
+            MainViewDisplay(modifier, state.weather, currentCity)
         }
     }
 
