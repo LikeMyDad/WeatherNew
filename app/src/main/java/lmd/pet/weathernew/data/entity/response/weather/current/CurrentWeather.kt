@@ -22,7 +22,7 @@ data class CurrentWeather(
     @SerializedName("wind_deg")
     val windDeg: Int,
     @SerializedName("weather")
-    val weatherIcon: List<CurrentWeatherIcon>
+    val weatherIcon: List<WeatherIcon>
 ) : Serializable {
     companion object {
         fun initial() = CurrentWeather(
@@ -39,7 +39,7 @@ data class CurrentWeather(
             dewPoint = 2.3,
             windDeg = 19,
             windSpeed = 12.2,
-            weatherIcon = listOf(CurrentWeatherIcon.initial())
+            weatherIcon = listOf(WeatherIcon.initial())
         )
     }
 }

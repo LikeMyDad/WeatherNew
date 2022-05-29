@@ -14,4 +14,16 @@ data class DailyWeather (
     val hourly: List<HourlyWeather>,
     @SerializedName("timezone_offset")
     val timezoneOffset: Int
-)
+) {
+    companion object {
+        fun initial() = DailyWeather(
+            lat = 2.2,
+            lon = 2.2,
+            timezone = "Europe/Paris",
+            current = CurrentWeather.initial(),
+            daily = listOf(DailyDayWeather.initial()),
+            hourly = listOf(HourlyWeather.initial()),
+            timezoneOffset = 3
+        )
+    }
+}

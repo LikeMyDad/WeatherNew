@@ -33,5 +33,9 @@ fun MainViewDisplay(
 fun MainViewDisplayPreview(
     modifier: Modifier = Modifier
 ) {
-//    MainViewDisplay(modifier = modifier)
+//    MainViewDisplay(
+//        modifier = modifier,
+//        dailyWeather = DailyWeather.initial(),
+//        currentCity = CityModel.initial()
+//    )
 }
