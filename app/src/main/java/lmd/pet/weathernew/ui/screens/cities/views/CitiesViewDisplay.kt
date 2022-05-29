@@ -39,7 +39,11 @@ fun CitiesViewDisplay(
             LazyColumn {
                 viewState.items.forEach {
                     item {
-                        CityCard(model = it, selectCity = selectedCity)
+                        CityCard(
+                            modifier = modifier,
+                            model = it,
+                            selectCity = selectedCity
+                        )
                     }
                 }
             }

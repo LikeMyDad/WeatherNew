@@ -1,13 +1,12 @@
 package lmd.pet.weathernew.data.entity.response.weather.current
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
 data class CurrentWeather(
-    val dt: Int,
+    val date: Long,
     val sunrise: Int,
     val sunset: Int,
-    val temp: Double,
+    val temperature: Double,
     val pressure: Double,
     val humidity: Int,
     val uvi: Double,
@@ -23,13 +22,13 @@ data class CurrentWeather(
     val windDeg: Int,
     @SerializedName("weather")
     val weatherIcon: List<WeatherIcon>
-) : Serializable {
+) {
     companion object {
         fun initial() = CurrentWeather(
-            dt = 1653714100,
+            date = 1653714100,
             sunrise = 1653702100,
             sunset = 1653729100,
-            temp = 12.2,
+            temperature = 12.2,
             pressure = 320.2,
             humidity = 0,
             uvi = 2.2,

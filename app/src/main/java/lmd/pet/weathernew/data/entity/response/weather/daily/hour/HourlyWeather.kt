@@ -5,7 +5,7 @@ import lmd.pet.weathernew.data.entity.response.weather.current.WeatherIcon
 
 
 data class HourlyWeather(
-    val dt: Int,
+    val date: Long,
     val pressure: Int,
     val humidity: Int,
     val uvi: Double,
@@ -28,7 +28,7 @@ data class HourlyWeather(
 ) {
     companion object {
         fun initial() = HourlyWeather(
-            dt = 1653714100,
+            date = 1653714100,
             pressure = 320,
             humidity = 0,
             uvi = 2.2,

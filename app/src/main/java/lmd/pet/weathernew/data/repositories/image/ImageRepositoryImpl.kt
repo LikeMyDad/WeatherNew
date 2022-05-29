@@ -7,7 +7,6 @@ import lmd.pet.weathernew.utils.enum.Image
 class ImageRepositoryImpl : ImageRepository {
     override fun generateImageUrl(iconId: String, size: Image.Size, format: Image.Format): String {
         val url = BuildConfig.weatherIconUrl + iconId + size.type + format.type
-        Log.d("ImageUrl", url)
         return url
     }
 }

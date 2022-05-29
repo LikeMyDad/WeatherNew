@@ -12,8 +12,8 @@ import androidx.compose.ui.unit.dp
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 
 @Composable
-fun CityCard(model: CityModel, selectCity: (model: CityModel) -> Unit) {
-    Card(modifier = Modifier
+fun CityCard(modifier: Modifier, model: CityModel, selectCity: (model: CityModel) -> Unit) {
+    Card(modifier = modifier
         .fillMaxWidth()
         .padding(vertical = 4.dp, horizontal = 2.dp)
         .clickable { selectCity(model) }
@@ -26,5 +26,8 @@ fun CityCard(model: CityModel, selectCity: (model: CityModel) -> Unit) {
 @Composable
 @Preview
 fun PreviewCityCard() {
-    CityCard(model = CityModel(0, "Test", "123", listOf())) {}
+    CityCard(
+        modifier = Modifier,
+        model = CityModel(0, "Test", "123", listOf())
+    ) {}
 }

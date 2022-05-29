@@ -2,8 +2,6 @@ package lmd.pet.weathernew.ui.screens.main.views
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,20 +19,21 @@ fun CurrentWeatherView(
     currentWeather: CurrentWeather,
     cityName: String
 ) {
-    val imageRepository: ImageRepository by inject()
+    val imageLoader: ImageRepository by inject()
 
-    Row(modifier = modifier.wrapContentSize()) {
-        Column {
+    Row {
+        Column(horizontalAlignment = Alignment.End) {
             Text(text = cityName)
+            Text(text = currentWeather.temperature.toString())
+            Text(text = currentWeather.date.toString())
         }
         AsyncImage(
-            model = imageRepository.generateImageUrl(
+            model = imageLoader.generateImageUrl(
                 iconId = currentWeather.weatherIcon.first().icon,
                 size = Image.Size.BIG,
                 format = Image.Format.PNG
             ),
             contentDescription = "",
-            alignment = Alignment.CenterEnd
         )
     }
 }

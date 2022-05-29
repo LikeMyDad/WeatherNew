@@ -1,7 +1,9 @@
 package lmd.pet.weathernew.ui.screens.main.views
 
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,6 +24,18 @@ fun MainViewDisplay(
                     modifier = modifier,
                     currentWeather = dailyWeather.current,
                     cityName = currentCity.cityName
+                )
+            }
+            item {
+                HourlyWeatherView(
+                    modifier = modifier,
+                    hourlyWeatherList = dailyWeather.hourly
+                )
+            }
+            item {
+                DailyWeatherView(
+                    modifier = modifier,
+                    dailyWeatherList = dailyWeather.daily
                 )
             }
         }

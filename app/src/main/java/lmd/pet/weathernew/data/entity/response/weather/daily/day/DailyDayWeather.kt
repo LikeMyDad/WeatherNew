@@ -2,10 +2,9 @@ package lmd.pet.weathernew.data.entity.response.weather.daily.day
 
 import com.google.gson.annotations.SerializedName
 import lmd.pet.weathernew.data.entity.response.weather.current.WeatherIcon
-import java.io.Serializable
 
 data class DailyDayWeather (
-    val dt: Int,
+    val date: Long,
     val sunrise: Int,
     val sunset: Int,
     val pressure: Int,
@@ -27,7 +26,7 @@ data class DailyDayWeather (
 ) {
     companion object {
         fun initial() = DailyDayWeather(
-            dt = 1653714100,
+            date = 1653714100,
             sunrise = 1653702100,
             sunset = 1653729100,
             pressure = 320,
