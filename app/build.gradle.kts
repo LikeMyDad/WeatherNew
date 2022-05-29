@@ -68,7 +68,6 @@ val androidList = listOf(
     Dependencies.Android.material,
     Dependencies.Android.gson,
     Dependencies.Kotlin.serialization,
-    Dependencies.Navigation.navigationCompose,
     Dependencies.Android.retrofit,
     Dependencies.Android.converter,
     Dependencies.Android.interceptor
@@ -80,7 +79,8 @@ val composeList = listOf(
     Dependencies.Compose.tooling,
     Dependencies.Compose.livedata,
     Dependencies.Compose.accompanistUI,
-    Dependencies.Compose.accompanist
+    Dependencies.Compose.accompanist,
+    Dependencies.Compose.navigationCompose,
 )
 
 val lifeCycleList = listOf(
@@ -97,8 +97,9 @@ val roomList = listOf(
 
 val koinList = listOf(
     Dependencies.Koin.koin,
-    Dependencies.Koin.koin_compose,
-    Dependencies.Koin.koin_navigation
+    Dependencies.Koin.koinCompose,
+    Dependencies.Koin.koinNavigation,
+    Dependencies.Koin.compat
 )
 
 val coilList = listOf(
@@ -115,6 +116,8 @@ dependencies {
 
     kapt(Dependencies.Room.compiler)
 
+    testImplementation(Dependencies.Koin.test)
+    testImplementation(Dependencies.Koin.testJunit)
     testImplementation(Dependencies.Test.jUnit)
     androidTestImplementation(Dependencies.Test.androidJUnit)
     androidTestImplementation(Dependencies.Test.espresso)

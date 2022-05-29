@@ -2,7 +2,7 @@ object Dependencies {
 
     object Compose {
         const val version = "1.0.5"
-        private const val companist = "0.24.4-alpha"
+        const val companist = "0.24.9-beta"
 
         const val ui = "androidx.compose.ui:ui:$version"
         const val material = "androidx.compose.material:material:$version"
@@ -17,6 +17,8 @@ object Dependencies {
 
         const val accompanistUI = "com.google.accompanist:accompanist-systemuicontroller:$companist"
         const val accompanist = "com.google.accompanist:accompanist-permissions:$companist"
+
+        const val navigationCompose = "androidx.navigation:navigation-compose:2.4.2"
     }
 
     object Kotlin {
@@ -31,9 +33,11 @@ object Dependencies {
     object Koin {
         private const val version= "3.2.0"
         const val koin = "io.insert-koin:koin-android:$version"
-        const val koin_navigation = "io.insert-koin:koin-androidx-navigation:$version"
-        const val koin_compose = "io.insert-koin:koin-androidx-compose:$version"
-
+        const val koinNavigation = "io.insert-koin:koin-androidx-navigation:$version"
+        const val koinCompose = "io.insert-koin:koin-androidx-compose:$version"
+        const val testJunit = "io.insert-koin:koin-test-junit4:$version"
+        const val test = "io.insert-koin:koin-test:$version"
+        const val compat = "io.insert-koin:koin-android-compat:$version"
     }
 
     object Room {
@@ -42,10 +46,6 @@ object Dependencies {
         const val runtime = "androidx.room:room-runtime:$version"
         const val paging = "androidx.room:room-paging:$version"
         const val compiler = "androidx.room:room-compiler:$version"
-    }
-
-    object Navigation {
-        const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-alpha10"
     }
 
     object Android {
