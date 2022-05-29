@@ -1,7 +1,7 @@
 package lmd.pet.weathernew.ui.screens.main.models
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import lmd.pet.weathernew.core.base.BaseViewModel
 import lmd.pet.weathernew.core.base.Reducer
@@ -34,7 +34,8 @@ class MainViewModel(
     override val state: StateFlow<MainState>
         get() = reducer.stateFlow
 
-    private val mutCitiesLiveData = MutableLiveData(emptyList<CityModel>())
+    private val mutCitiesStateFlow = MutableStateFlow(emptyList<CityModel>())
+    val citiesStateFlow: StateFlow<List<CityModel>> = mutCitiesStateFlow
 
     init {
         sendEvent(MainEvent.EnterScreen)
@@ -47,7 +48,7 @@ class MainViewModel(
                 sendEvent(MainEvent.Loading)
             },
             onComplete = { cities ->
-                mutCitiesLiveData.value = cities
+                mutCitiesStateFlow.value = cities
                 getCityWeather(cities.first().id)
             },
             onError = { throwable ->

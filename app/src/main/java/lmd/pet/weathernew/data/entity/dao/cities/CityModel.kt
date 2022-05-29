@@ -10,4 +10,13 @@ data class CityModel(
     val timeZone: String,
     val coordCity: List<Double>,
     val isShowCityWeather: Boolean = false
-)
+) {
+    companion object {
+        fun initial() = CityModel(
+            id = 0,
+            cityName = "TestCity",
+            timeZone = "Europe",
+            coordCity = emptyList()
+        )
+    }
+}

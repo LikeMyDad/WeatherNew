@@ -2,7 +2,7 @@ package lmd.pet.weathernew.data.dataSource.cities
 
 import lmd.pet.weathernew.core.network.CitiesNetwork
 import lmd.pet.weathernew.data.dataBase.CitiesDataBase
-import lmd.pet.weathernew.data.dataSource.mapper.toModel
+import lmd.pet.weathernew.data.dataSource.toModel
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import lmd.pet.weathernew.utils.network.onSuccess
 

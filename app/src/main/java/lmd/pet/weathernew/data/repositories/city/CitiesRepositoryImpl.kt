@@ -2,7 +2,6 @@ package lmd.pet.weathernew.data.repositories.city
 
 import lmd.pet.weathernew.data.dataSource.cities.CitiesDataSource
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
-import javax.inject.Inject
 
 class CitiesRepositoryImpl(
     private val dataSource: CitiesDataSource

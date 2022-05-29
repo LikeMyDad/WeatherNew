@@ -2,7 +2,6 @@ package lmd.pet.weathernew.domain.useCases.cities
 
 import lmd.pet.weathernew.core.base.coroutine.CoroutineUseCase
 import lmd.pet.weathernew.data.repositories.city.CitiesRepository
-import javax.inject.Inject
 
 class SetStateToShowCityWeatherInteractor(
     private val repository: CitiesRepository

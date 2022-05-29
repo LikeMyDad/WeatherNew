@@ -1,7 +1,5 @@
 package lmd.pet.weathernew.data.entity.response.weather.daily.day
 
-import java.io.Serializable
-
 data class DailyDayWeatherTemp (
     val day: Double,
     val min: Double,
@@ -9,4 +7,15 @@ data class DailyDayWeatherTemp (
     val night: Double,
     val eve: Double,
     val morn: Double
-): Serializable
+) {
+    companion object {
+        fun initial() = DailyDayWeatherTemp(
+            day = 2.2,
+            min = 0.0,
+            max = 4.0,
+            night = 0.0,
+            eve = 4.0,
+            morn = 1.0
+        )
+    }
+}

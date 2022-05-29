@@ -11,3 +11,7 @@ fun Project.getWeatherUrl(): String {
 fun Project.getCitiesUrl(): String {
     return findProperty("citiesUrl") as? String ?: ""
 }
+
+fun Project.getWeatherIconUrl(): String {
+    return findProperty("weatherIconUrl") as? String ?: ""
+}

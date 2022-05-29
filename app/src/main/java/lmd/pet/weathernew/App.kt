@@ -1,7 +1,6 @@
 package lmd.pet.weathernew
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
 import lmd.pet.weathernew.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

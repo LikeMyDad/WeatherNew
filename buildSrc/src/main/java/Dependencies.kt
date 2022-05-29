@@ -2,7 +2,7 @@ object Dependencies {
 
     object Compose {
         const val version = "1.0.5"
-        const val companist = "0.24.4-alpha"
+        const val companist = "0.24.9-beta"
 
         const val ui = "androidx.compose.ui:ui:$version"
         const val material = "androidx.compose.material:material:$version"
@@ -17,25 +17,27 @@ object Dependencies {
 
         const val accompanistUI = "com.google.accompanist:accompanist-systemuicontroller:$companist"
         const val accompanist = "com.google.accompanist:accompanist-permissions:$companist"
+
+        const val navigationCompose = "androidx.navigation:navigation-compose:2.4.2"
     }
 
     object Kotlin {
         const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2"
     }
 
-    object Hilt {
-        const val version = "2.38.1"
-        const val android = "com.google.dagger:hilt-android:$version"
-        const val navigation = "androidx.hilt:hilt-navigation-compose:1.0.0-rc01"
-        const val compiler = "com.google.dagger:hilt-compiler:$version"
+    object Coil {
+        private const val version = "2.1.0"
+        const val coilCompose = "io.coil-kt:coil-compose:$version"
     }
 
     object Koin {
-        const val koin_version= "3.2.0"
-        const val koin = "io.insert-koin:koin-android:$koin_version"
-        const val koin_navigation = "io.insert-koin:koin-androidx-navigation:$koin_version"
-        const val koin_compose = "io.insert-koin:koin-androidx-compose:$koin_version"
-
+        private const val version= "3.2.0"
+        const val koin = "io.insert-koin:koin-android:$version"
+        const val koinNavigation = "io.insert-koin:koin-androidx-navigation:$version"
+        const val koinCompose = "io.insert-koin:koin-androidx-compose:$version"
+        const val testJunit = "io.insert-koin:koin-test-junit4:$version"
+        const val test = "io.insert-koin:koin-test:$version"
+        const val compat = "io.insert-koin:koin-android-compat:$version"
     }
 
     object Room {
@@ -44,10 +46,6 @@ object Dependencies {
         const val runtime = "androidx.room:room-runtime:$version"
         const val paging = "androidx.room:room-paging:$version"
         const val compiler = "androidx.room:room-compiler:$version"
-    }
-
-    object Navigation {
-        const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-alpha10"
     }
 
     object Android {
