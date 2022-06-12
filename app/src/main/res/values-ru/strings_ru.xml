@@ -9,5 +9,9 @@
     <string name="text_alert_permission">Разрешить приложению доступ для предоставления локального контента</string>
     <string name="allow">Предоставить</string>
     <string name="do_not_allow">Не предоставлять</string>
+    <string name="start_typing">Начните печатать…</string>
+
+    <!-- accessibility -->
+    <string name="search_field">Поисковое поле</string>
 
 </resources>

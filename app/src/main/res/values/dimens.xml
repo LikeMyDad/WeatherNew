@@ -8,4 +8,6 @@
     <dimen name="very_small_spacing">4dp</dimen>
 
     <dimen name="large_icon_size">125dp</dimen>
+    <dimen name="city_card_size">52dp</dimen>
+    <dimen name="search_field_height">72dp</dimen>
 </resources>

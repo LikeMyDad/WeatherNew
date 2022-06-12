@@ -9,6 +9,10 @@
     <string name="text_alert_permission">Allow application to access to provide local content</string>
     <string name="allow">Allow</string>
     <string name="do_not_allow">Don\'t allow</string>
+    <string name="start_typing">Start typing…</string>
+
+    <!-- accessibility -->
+    <string name="search_field">Search field</string>
 
 <!--    <string name="description">description</string>-->
 <!--    <string name="sunrise">Sunrise</string>-->

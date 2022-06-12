@@ -5,21 +5,38 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import lmd.pet.weathernew.R
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 
 @Composable
 fun CityCard(modifier: Modifier, model: CityModel, selectCity: (model: CityModel) -> Unit) {
-    Card(modifier = modifier
-        .fillMaxWidth()
-        .padding(vertical = 4.dp, horizontal = 2.dp)
-        .clickable { selectCity(model) }
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .size(dimensionResource(id = R.dimen.city_card_size))
+            .padding(dimensionResource(id = R.dimen.very_small_spacing))
+            .clickable { selectCity(model) }
     ) {
-        Text(text = model.cityName, modifier = Modifier.padding(8.dp), textAlign = TextAlign.Start)
-        Text(text = model.timeZone, modifier = Modifier.padding(8.dp), textAlign = TextAlign.End)
+        Row(
+            modifier = modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = model.cityName,
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.small_spacing)),
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = model.timeZone,
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.small_spacing))
+            )
+        }
     }
 }
 
