@@ -10,8 +10,8 @@ class LocaleUtils {
 
     companion object {
         fun wrap(context: Context, lang: String): ContextWrapper {
-            val resources = context?.resources
-            val configuration = resources?.configuration
+            val resources = context.resources
+            val configuration = resources.configuration
             val newLocale = Locale(lang)
 
             val newContext = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

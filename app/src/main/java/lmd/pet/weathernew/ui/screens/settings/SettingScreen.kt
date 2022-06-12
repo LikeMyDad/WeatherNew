@@ -35,10 +35,6 @@ fun SettingScreen(
                 checked = rememberChecked,
                 onCheckedChange = {
                     rememberChecked = it
-
-                    val leng = if (it) "ru" else "en"
-
-                    callback(LocaleUtils(context).updateResources(leng))
                 }
             )
         }
