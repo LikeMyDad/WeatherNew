@@ -32,4 +32,5 @@ class StartViewModel : BaseViewModel<StartState, StartEvent>() {
     fun navigate(dest: NavigationDest) {
         sendEvent(StartEvent.Navigation(dest))
     }
+
 }

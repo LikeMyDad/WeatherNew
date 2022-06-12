@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_title">Добро пожаловать</string>
+    <string name="language">Язык</string>
+    <string name="start">Начать</string>
+    <string name="city">Город</string>
+    <string name="text_location_permission">Разрешите приложению предоставлять вам наиболее точный прогноз, разрешив нам использовать местоположение вашего устройства</string>
+    <string name="title_alert_permission">Предоставить приложению доступ к вашей локации?</string>
+    <string name="text_alert_permission">Разрешить приложению доступ для предоставления локального контента</string>
+    <string name="allow">Предоставить</string>
+    <string name="do_not_allow">Не предоставлять</string>
+
+</resources>

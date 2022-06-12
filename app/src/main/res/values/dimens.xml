@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bid_spacing">32dp</dimen>
+    <dimen name="medium_spacing">24dp</dimen>
+    <dimen name="normal_spacing">16dp</dimen>
+    <dimen name="regular_spacing">12dp</dimen>
+    <dimen name="small_spacing">8dp</dimen>
+    <dimen name="very_small_spacing">4dp</dimen>
+
+    <dimen name="large_icon_size">125dp</dimen>
+</resources>
