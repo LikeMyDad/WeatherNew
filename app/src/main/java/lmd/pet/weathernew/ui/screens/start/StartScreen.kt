@@ -7,6 +7,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import androidx.navigation.navArgument
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import lmd.pet.weathernew.ui.screens.start.models.StartState
@@ -32,7 +33,9 @@ fun StartScreen(
     ) {
         val navigationDest = if (it.containsValue(true)) {
             NavigationDest.MainScreen
-        } else NavigationDest.CitiesScreen
+        } else {
+            NavigationDest.CitiesScreen
+        }
 
         viewModel.navigate(navigationDest)
     }

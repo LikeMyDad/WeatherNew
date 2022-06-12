@@ -82,6 +82,7 @@ val composeList = listOf(
     Dependencies.Compose.accompanistUI,
     Dependencies.Compose.accompanist,
     Dependencies.Compose.navigationCompose,
+    Dependencies.Compose.constraint
 )
 
 val lifeCycleList = listOf(

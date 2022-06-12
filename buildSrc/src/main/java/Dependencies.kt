@@ -8,17 +8,14 @@ object Dependencies {
         const val material = "androidx.compose.material:material:$version"
         const val tooling = "androidx.compose.ui:ui-tooling-preview:$version"
         const val livedata = "androidx.compose.runtime:runtime-livedata:$version"
-
         const val toolingTest = "androidx.compose.ui:ui-tooling:$version"
         const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
-
         const val activity = "androidx.activity:activity-compose:1.3.1"
         const val viewModels = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
-
         const val accompanistUI = "com.google.accompanist:accompanist-systemuicontroller:$companist"
         const val accompanist = "com.google.accompanist:accompanist-permissions:$companist"
-
         const val navigationCompose = "androidx.navigation:navigation-compose:2.4.2"
+        const val constraint = "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
     }
 
     object Kotlin {
