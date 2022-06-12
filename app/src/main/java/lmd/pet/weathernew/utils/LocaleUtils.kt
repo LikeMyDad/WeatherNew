@@ -2,22 +2,30 @@ package lmd.pet.weathernew.utils
 
 import android.content.Context
 import android.content.ContextWrapper
-import android.content.res.Configuration
+import android.os.Build
+import android.os.LocaleList
 import java.util.*
 
-class LocaleUtils(context: Context) : ContextWrapper(context) {
-    fun setLocale(pref: String?) = updateResources(pref ?: "en") //use locale codes
+class LocaleUtils {
 
-    fun updateResources(language: String): Configuration {
-        return resources.run {
-            val locale = Locale(language)
-            val config = configuration
+    companion object {
+        fun wrap(context: Context, lang: String): ContextWrapper {
+            val resources = context?.resources
+            val configuration = resources?.configuration
+            val newLocale = Locale(lang)
 
-            Locale.setDefault(locale)
-            config.setLocale(locale)
-            config.setLayoutDirection(locale)
+            val newContext = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                configuration.setLocale(newLocale)
+                val localeList = LocaleList(newLocale)
+                LocaleList.setDefault(localeList)
+                configuration.setLocales(localeList)
+                context.createConfigurationContext(configuration)
+            } else {
+                configuration.setLocale(newLocale)
+                context.createConfigurationContext(configuration)
+            }
 
-            config
+            return ContextWrapper(newContext)
         }
     }
 
