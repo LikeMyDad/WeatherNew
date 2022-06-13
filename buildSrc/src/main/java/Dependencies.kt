@@ -3,6 +3,10 @@ object Dependencies {
     object Compose {
         const val version = "1.0.5"
         const val companist = "0.24.9-beta"
+        private const val pagingVersion = "1.0.0-alpha15"
+        private const val viewModelVersion = "2.4.2"
+        private const val constraintVersion = "1.0.0-beta02"
+        private const val navigationVersion = "2.4.2"
 
         const val ui = "androidx.compose.ui:ui:$version"
         const val material = "androidx.compose.material:material:$version"
@@ -10,12 +14,12 @@ object Dependencies {
         const val livedata = "androidx.compose.runtime:runtime-livedata:$version"
         const val toolingTest = "androidx.compose.ui:ui-tooling:$version"
         const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
-        const val activity = "androidx.activity:activity-compose:1.3.1"
-        const val viewModels = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+        const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelVersion"
         const val accompanistUI = "com.google.accompanist:accompanist-systemuicontroller:$companist"
         const val accompanist = "com.google.accompanist:accompanist-permissions:$companist"
-        const val navigationCompose = "androidx.navigation:navigation-compose:2.4.2"
-        const val constraint = "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
+        const val navigationCompose = "androidx.navigation:navigation-compose:$navigationVersion"
+        const val constraint = "androidx.constraintlayout:constraintlayout-compose:$constraintVersion"
+        const val paging = "androidx.paging:paging-compose:$pagingVersion"
     }
 
     object Kotlin {

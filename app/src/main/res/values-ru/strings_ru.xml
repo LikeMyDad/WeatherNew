@@ -10,6 +10,7 @@
     <string name="allow">Предоставить</string>
     <string name="do_not_allow">Не предоставлять</string>
     <string name="start_typing">Начните печатать…</string>
+    <string name="no_results">Нет результатов</string>
 
     <!-- accessibility -->
     <string name="search_field">Поисковое поле</string>

@@ -1,14 +1,21 @@
 package lmd.pet.weathernew.data.entity.dao.cities
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 
 @Dao
 interface CitiesDao {
     @Query("SELECT * FROM cityModel")
     suspend fun getCities(): List<CityModel>
 
-    @Query("SELECT * FROM cityModel WHERE cityName LIKE :searchQuery")
-    suspend fun getCitiesBySearchQuery(searchQuery: String): List<CityModel>
+    @Query("SELECT * FROM cityModel WHERE cityName LIKE :searchQuery LIMIT :limit OFFSET :offset")
+    suspend fun getCitiesBySearchQuery(
+        searchQuery: String,
+        limit: Int,
+        offset: Int
+    ): List<CityModel>
 
     @Query("SELECT * FROM cityModel WHERE id = :id")
     suspend fun getCityById(id: Int): CityModel
@@ -21,4 +28,7 @@ interface CitiesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCities(vararg cities: CityModel)
+
+    @Query("DELETE FROM cityModel")
+    suspend fun clearAll()
 }

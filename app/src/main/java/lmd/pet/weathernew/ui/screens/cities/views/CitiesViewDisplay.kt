@@ -1,6 +1,9 @@
 package lmd.pet.weathernew.ui.screens.cities.views
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedTextField
@@ -14,9 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import lmd.pet.weathernew.R
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
+import lmd.pet.weathernew.ui.composable.Loading
 import lmd.pet.weathernew.ui.screens.cities.models.CitiesState
 
 @Composable
@@ -25,13 +30,17 @@ fun CitiesViewDisplay(
     viewState: CitiesState.DisplayCities,
     onValueChange: (query: String) -> Unit,
     messageStates: MutableState<String>,
-    selectedCity: (CityModel) -> Unit
+    selectedCity: (CityModel) -> Unit,
+    isLoading: Boolean = false
 ) {
+
     Surface(modifier = modifier.fillMaxSize()) {
         Column {
             OutlinedTextField(
                 value = messageStates.value,
-                onValueChange = onValueChange,
+                onValueChange = {
+                    onValueChange(it)
+                },
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(dimensionResource(id = R.dimen.normal_spacing)),
@@ -48,13 +57,36 @@ fun CitiesViewDisplay(
             )
 
             LazyColumn {
-                viewState.items.forEach {
+                if (isLoading) {
                     item {
-                        CityCard(
-                            modifier = modifier,
-                            model = it,
-                            selectCity = selectedCity
-                        )
+                        Loading()
+                    }
+                } else {
+                    if (viewState.items.isNotEmpty()) {
+                        viewState.items.forEach {
+                            item {
+                                CityCard(
+                                    modifier = modifier,
+                                    model = it,
+                                    selectCity = selectedCity
+                                )
+                            }
+                        }
+                    } else {
+                        item
+                        item {
+                            Text(
+                                text = stringResource(id = R.string.no_results),
+                                modifier = modifier
+                                    .fillMaxWidth()
+                                    .padding(
+                                        horizontal = dimensionResource(
+                                            id = R.dimen.normal_spacing
+                                        )
+                                    ),
+                                textAlign = TextAlign.Center
+                            )
+                        }
                     }
                 }
             }

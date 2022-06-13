@@ -17,6 +17,7 @@ fun CitiesScreen(
     viewModel: CitiesViewModel
 ) {
     val viewState by viewModel.state.collectAsState()
+    val loadingState by viewModel.loading.collectAsState()
     val messageStates = remember { mutableStateOf("") }
 
     val searchQuery: (String) -> Unit = { query ->
@@ -35,7 +36,8 @@ fun CitiesScreen(
             viewState = state,
             onValueChange = searchQuery,
             messageStates = messageStates,
-            selectedCity = selectCity
+            selectedCity = selectCity,
+            isLoading = loadingState
         )
         is CitiesState.Navigate -> {
             LaunchedEffect(key1 = Unit) {

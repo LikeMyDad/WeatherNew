@@ -7,7 +7,7 @@ class SetStateToShowCityWeatherInteractor(
     private val repository: CitiesRepository
 ) : CoroutineUseCase<SetStateToShowCityWeatherInteractor.Params>() {
 
-    override suspend fun executeOnBackground(params: Params?) {
+    override suspend fun doWork(params: Params?) {
         params?.let {
             repository.setCityWeather(id = it.cityId, isShowCityWeather = it.isShowWeather)
         }

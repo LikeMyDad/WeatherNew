@@ -1,32 +1,31 @@
 package lmd.pet.weathernew.data.dataSource.cities
 
-import lmd.pet.weathernew.core.network.CitiesNetwork
-import lmd.pet.weathernew.data.dataBase.CitiesDataBase
+import lmd.pet.weathernew.core.network.CitiesNetworkSource
 import lmd.pet.weathernew.data.dataSource.toModel
 import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 import lmd.pet.weathernew.utils.network.onSuccess
 
 class CitiesDataSource(
-    private val network: CitiesNetwork,
+    private val network: CitiesNetworkSource,
     private val dataBase: CitiesDataBase
 ) {
 
     suspend fun getCities(page: Int, query: String): List<CityModel> {
         return fillDbOrGetQueryCities(page = page, query = query) {
             if (query.isBlank()) {
-                dataBase.getCitiesDao().getCities()
+                dataBase.getCities()
             } else {
-                dataBase.getCitiesDao().getCitiesBySearchQuery(searchQuery = query)
+                dataBase.getCitiesBySearchQuery(searchQuery = query, 30, page)
             }
         }
     }
 
     suspend fun setStateToShowCityWeather(id: Int, isShowCityWeather: Boolean) {
-        dataBase.getCitiesDao().setStateShowCityWeatherById(id, isShowCityWeather)
+        dataBase.setStateShowCityWeatherById(id, isShowCityWeather)
     }
 
     suspend fun getCitiesWeather(): List<CityModel> {
-        return dataBase.getCitiesDao().getCitiesWeather()
+        return dataBase.getCitiesWeather()
     }
 
     private suspend fun <T> fillDbOrGetQueryCities(
@@ -44,7 +43,9 @@ class CitiesDataSource(
             network.getCities(page = page, query = query)
                 .onSuccess { cities ->
                     cities.citiesRecords.map { it.cityFields.toModel() }
-                        .also { dataBase.getCitiesDao().insertCities(*it.toTypedArray()) }
+                        .also {
+                            dataBase.insertCities(it)
+                        }
                 }
             block() ?: throw NullPointerException()
         } else {

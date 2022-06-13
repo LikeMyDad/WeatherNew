@@ -4,7 +4,7 @@ import lmd.pet.weathernew.utils.CitiesResponse
 import lmd.pet.weathernew.core.base.Network
 import lmd.pet.weathernew.data.api.CitiesApi
 
-class CitiesNetwork (
+class CitiesNetworkSource (
     private val service: CitiesApi
 ) : Network() {
 

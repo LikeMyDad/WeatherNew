@@ -8,7 +8,7 @@ class GetCityWeatherInteractor(
     private val repository: WeatherRepository
 ): CoroutineResultUseCase<DailyWeather, GetCityWeatherInteractor.Params>() {
 
-    override suspend fun executeOnBackground(params: Params?): DailyWeather {
+    override suspend fun doWork(params: Params?): DailyWeather {
         return params?.let {
             repository.getCityWeather(cityId = it.cityId)
         } ?: throw Exception("No params")

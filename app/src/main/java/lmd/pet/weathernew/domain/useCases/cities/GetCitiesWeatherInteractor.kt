@@ -7,7 +7,7 @@ import lmd.pet.weathernew.data.repositories.city.CitiesRepository
 class GetCitiesWeatherInteractor(
     private val repository: CitiesRepository
 ): CoroutineResultUseCase<List<CityModel>, Unit>() {
-    override suspend fun executeOnBackground(params: Unit?): List<CityModel> {
+    override suspend fun doWork(params: Unit?): List<CityModel> {
         return repository.getCitiesWeather()
     }
 }

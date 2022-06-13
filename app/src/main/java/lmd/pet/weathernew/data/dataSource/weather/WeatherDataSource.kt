@@ -1,7 +1,7 @@
 package lmd.pet.weathernew.data.dataSource.weather
 
 import lmd.pet.weathernew.core.network.WeatherNetwork
-import lmd.pet.weathernew.data.dataBase.CitiesDataBase
+import lmd.pet.weathernew.data.room.CitiesDataBaseRoom
 import lmd.pet.weathernew.data.entity.response.weather.DailyWeather
 import lmd.pet.weathernew.utils.network.onError
 import lmd.pet.weathernew.utils.network.onSuccess
@@ -9,7 +9,7 @@ import java.lang.Exception
 
 class WeatherDataSource(
     private val network: WeatherNetwork,
-    private val dataBase: CitiesDataBase
+    private val dataBase: CitiesDataBaseRoom
 ) {
 
     suspend fun getCityWeather(cityId: Int): DailyWeather {

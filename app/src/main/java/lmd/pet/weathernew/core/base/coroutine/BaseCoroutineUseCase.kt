@@ -17,11 +17,11 @@ abstract class BaseCoroutineUseCase<out Result,in Params> {
             field = value
         }
 
-    protected abstract suspend fun executeOnBackground(params: Params?): Result
+    protected abstract suspend fun doWork(params: Params?): Result
 
     protected suspend fun doAsync(params: Params?): Deferred<Result> = coroutineScope {
         async(asyncJob  + Dispatchers.IO) {
-            executeOnBackground(params)
+            doWork(params)
         }.also { job = it }
     }
 

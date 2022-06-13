@@ -8,6 +8,7 @@ import lmd.pet.weathernew.data.entity.dao.cities.CityModel
 sealed class CitiesEvent : UiEvent {
     object EnterScreen : CitiesEvent()
     data class SearchCities(val query: String): CitiesEvent()
+    data class LoadNextPageCities(val page: Int): CitiesEvent()
     data class DisplayCities(val cities: List<CityModel>): CitiesEvent()
     data class SelectCity(val id: Int): CitiesEvent()
     object Navigate : CitiesEvent()

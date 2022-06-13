@@ -1,4 +1,4 @@
-package lmd.pet.weathernew.data.dataBase
+package lmd.pet.weathernew.data.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
@@ -12,7 +12,7 @@ import lmd.pet.weathernew.utils.Converters
     version = 1
 )
 @TypeConverters(Converters::class)
-abstract class CitiesDataBase : RoomDatabase() {
+abstract class CitiesDataBaseRoom : RoomDatabase() {
 
     abstract fun getCitiesDao(): CitiesDao
 

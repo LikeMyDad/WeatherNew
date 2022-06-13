@@ -9,7 +9,7 @@ class GetCitiesInteractor(
     private val repository: CitiesRepository
 ): CoroutineResultUseCase<List<CityModel>, GetCitiesInteractor.Params>() {
 
-    override suspend fun executeOnBackground(params: Params?): List<CityModel> {
+    override suspend fun doWork(params: Params?): List<CityModel> {
         return params?.let {
             repository.getCities(page = it.page, query = it.query)
         } ?: throw NullPointerException("Need Params")

@@ -10,6 +10,7 @@
     <string name="allow">Allow</string>
     <string name="do_not_allow">Don\'t allow</string>
     <string name="start_typing">Start typing…</string>
+    <string name="no_results">No results</string>
 
     <!-- accessibility -->
     <string name="search_field">Search field</string>

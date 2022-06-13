@@ -17,10 +17,12 @@ abstract class CoroutineResultUseCase<Result, Params> : BaseCoroutineUseCase<Res
             onPreExecute()
 
             val deferred = doAsync(params)
+
             onComplete(deferred.await())
         } catch (e: Throwable) {
             Log.getStackTraceString(e)
             onError(e)
+        } finally {
             onPostExecute()
         }
     }

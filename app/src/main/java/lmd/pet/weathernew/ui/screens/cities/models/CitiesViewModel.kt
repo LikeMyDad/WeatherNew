@@ -1,6 +1,7 @@
 package lmd.pet.weathernew.ui.screens.cities.models
 
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import lmd.pet.weathernew.core.base.BaseViewModel
 import lmd.pet.weathernew.core.base.Reducer
@@ -17,13 +18,20 @@ class CitiesViewModel(
             override fun reduce(state: CitiesState, event: CitiesEvent) {
                 when (event) {
                     is CitiesEvent.EnterScreen -> setState(CitiesState.Loading)
-                    is CitiesEvent.SearchCities -> fetchCities(event.query)
+                    is CitiesEvent.SearchCities -> fetchCities(event.query, page)
+                    is CitiesEvent.LoadNextPageCities -> fetchCities(savedQuery, event.page)
                     is CitiesEvent.DisplayCities -> setState(CitiesState.DisplayCities(event.cities))
                     is CitiesEvent.SelectCity -> setCityWeather(event.id)
                     is CitiesEvent.Navigate -> setState(CitiesState.Navigate)
                 }
             }
         }
+
+    private val mutLoading = MutableStateFlow(false)
+    val loading: StateFlow<Boolean> = mutLoading
+
+    private var page: Int = 0
+    private var savedQuery: String = ""
 
     override val state: StateFlow<CitiesState>
         get() = citiesReducer.stateFlow
@@ -59,12 +67,23 @@ class CitiesViewModel(
         )
     }
 
-    private fun fetchCities(query: String) {
+    fun loadNextPageCities() {
+        page++
+        sendEvent(CitiesEvent.LoadNextPageCities(page))
+    }
+
+    private fun fetchCities(query: String, page: Int) {
         citiesUseCase.execute(
             scope = viewModelScope,
-            params = GetCitiesInteractor.Params(query),
+            params = GetCitiesInteractor.Params(query, page),
+            onPreExecute = {
+                mutLoading.value = true
+            },
             onComplete = { cities ->
                 sendEvent(CitiesEvent.DisplayCities(cities))
+            },
+            onPostExecute = {
+                mutLoading.value = false
             }
         )
     }
